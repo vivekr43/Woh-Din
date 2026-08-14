@@ -4,6 +4,8 @@ import { getMoonPhase } from '../utils/moonPhase';
 import { getBollywoodSong } from '../data/songs';
 import { getPriceIndexForYear, formatINR } from '../data/prices';
 import { generateDualRoast } from '../utils/roastEngine';
+import { getMovieForYear } from '../data/movies';
+import { getGameForYear } from '../data/games';
 
 interface PersonFormState {
   name: string;
@@ -396,6 +398,20 @@ export const CompareBirthdays: React.FC = () => {
                 <span className="font-medium text-[#E8A33D]">"{song1.song.songTitle}"</span>
               </div>
 
+              <div className="flex justify-between items-center border-t border-[#2D251E] pt-2">
+                <span className="text-[#A89B8C]">🎬 Top Film:</span>
+                <span className="font-medium text-[#E8A33D] text-xs truncate max-w-[180px]">
+                  {getMovieForYear(year1, person1.day + person1.month * 31 + year1).title}
+                </span>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <span className="text-[#A89B8C]">🎮 Game / Craze:</span>
+                <span className="font-medium text-[#38BDF8] text-xs truncate max-w-[180px]">
+                  {getGameForYear(year1, person1.day + person1.month * 31 + year1).title}
+                </span>
+              </div>
+
               <div className="flex justify-between">
                 <span className="text-[#A89B8C]">Cinema Ticket:</span>
                 <span className="font-mono text-[#F5EBE0]">{formatINR(price1.cinemaTicket)}</span>
@@ -419,6 +435,20 @@ export const CompareBirthdays: React.FC = () => {
               <div className="flex justify-between">
                 <span className="text-[#A89B8C]">Bollywood Song:</span>
                 <span className="font-medium text-[#E8A33D]">"{song2.song.songTitle}"</span>
+              </div>
+
+              <div className="flex justify-between items-center border-t border-[#2D251E] pt-2">
+                <span className="text-[#A89B8C]">🎬 Top Film:</span>
+                <span className="font-medium text-[#E8A33D] text-xs truncate max-w-[180px]">
+                  {getMovieForYear(year2, person2.day + person2.month * 31 + year2).title}
+                </span>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <span className="text-[#A89B8C]">🎮 Game / Craze:</span>
+                <span className="font-medium text-[#38BDF8] text-xs truncate max-w-[180px]">
+                  {getGameForYear(year2, person2.day + person2.month * 31 + year2).title}
+                </span>
               </div>
 
               <div className="flex justify-between">

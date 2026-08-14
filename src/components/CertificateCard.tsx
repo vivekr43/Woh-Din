@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   Share2, Download, ArrowLeft, Thermometer, 
   Newspaper, ShoppingBag, RefreshCw, Flame, Sparkles, Smartphone, Clock,
-  Sunrise, Moon, Quote, X
+  Sunrise, Moon, Quote, X, Film, Gamepad2
 } from 'lucide-react';
 import { toPng } from 'html-to-image';
 import confetti from 'canvas-confetti';
@@ -28,6 +28,8 @@ import { RadioWohDin } from './RadioWohDin';
 import { TimeCapsuleCalculator } from './TimeCapsuleCalculator';
 import { getArrivalDayHighlights } from '../utils/dayHighlights';
 import { LiveHeartbeatCounter } from './LiveHeartbeatCounter';
+import { getMovieForYear } from '../data/movies';
+import { getGameForYear } from '../data/games';
 
 interface CertificateCardProps {
   name: string;
@@ -256,6 +258,10 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
   };
 
   const diyaProgressPercent = Math.min(100, revealStep * 20);
+  const dateSeed = dob.getDate() + (dob.getMonth() + 1) * 31 + birthYear;
+  const movie = getMovieForYear(birthYear, dateSeed);
+  const game = getGameForYear(birthYear, dateSeed);
+
   const roastData = generateFullRoast({
     name,
     cityName: city,
@@ -697,6 +703,63 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
 
               {/* TIME CAPSULE WEALTH INFLATION CALCULATOR */}
               <TimeCapsuleCalculator birthYear={birthYear} />
+            </div>
+          )}
+
+          {/* SECTION 6: TOP FILM OF THE YEAR & GAME / NOSTALGIC CRAZE OF THE YEAR */}
+          {revealStep >= 5 && (
+            <div className="animate-fade-in-up grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* FILM OF THE YEAR CARD */}
+              <div className="bg-[#120F0D]/85 p-4.5 sm:p-5 rounded-2xl border border-[#2D251E] space-y-3 shadow-lg">
+                <div className="flex items-center justify-between border-b border-[#2D251E] pb-2.5">
+                  <span className="font-fraunces text-xs sm:text-sm font-bold text-[#E8A33D] flex items-center gap-1.5">
+                    <Film className="w-4 h-4 text-[#E8A33D]" />
+                    <span>🎬 Top Film of {birthYear}</span>
+                  </span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#201A14] text-[#E8A33D] border border-[#E8A33D]/30">
+                    {movie.boxOfficeStatus}
+                  </span>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="font-fraunces text-base sm:text-lg font-extrabold text-[#F5EBE0]">
+                    {movie.title}
+                  </div>
+                  <div className="text-xs text-[#A89B8C]">
+                    ⭐ Stars: <span className="text-[#F5EBE0] font-medium">{movie.stars}</span>
+                  </div>
+                </div>
+
+                <div className="bg-[#201A14]/90 p-3 rounded-xl border border-[#2D251E] text-xs italic text-[#E8A33D]">
+                  "{movie.iconicDialogue}"
+                </div>
+              </div>
+
+              {/* GAME OF THE YEAR CARD */}
+              <div className="bg-[#120F0D]/85 p-4.5 sm:p-5 rounded-2xl border border-[#2D251E] space-y-3 shadow-lg">
+                <div className="flex items-center justify-between border-b border-[#2D251E] pb-2.5">
+                  <span className="font-fraunces text-xs sm:text-sm font-bold text-[#38BDF8] flex items-center gap-1.5">
+                    <Gamepad2 className="w-4 h-4 text-[#38BDF8]" />
+                    <span>🎮 Game / Craze of {birthYear}</span>
+                  </span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#201A14] text-[#38BDF8] border border-[#38BDF8]/30">
+                    {game.memoryTag}
+                  </span>
+                </div>
+
+                <div className="space-y-1">
+                  <div className="font-fraunces text-base sm:text-lg font-extrabold text-[#F5EBE0]">
+                    {game.title}
+                  </div>
+                  <div className="text-xs text-[#A89B8C]">
+                    🕹️ Category: <span className="text-[#38BDF8] font-medium">{game.category}</span>
+                  </div>
+                </div>
+
+                <div className="bg-[#201A14]/90 p-3 rounded-xl border border-[#2D251E] text-xs text-[#A89B8C] leading-relaxed">
+                  "{game.nostalgicVibe}"
+                </div>
+              </div>
             </div>
           )}
 
