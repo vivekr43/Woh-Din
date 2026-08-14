@@ -420,8 +420,8 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
 
           {/* SECTION 1: THE MOON OVERHEAD */}
           {revealStep >= 1 && moon && (
-            <div className="animate-fade-in-up bg-[#120F0D]/85 p-5 rounded-xl border border-[#2D251E] space-y-3">
-              <div className="flex items-center justify-between border-b border-[#2D251E] pb-2">
+            <div className="animate-fade-in-up bg-[#120F0D]/85 p-4.5 sm:p-6 rounded-2xl border border-[#2D251E] space-y-4">
+              <div className="flex items-center justify-between border-b border-[#2D251E] pb-2.5">
                 <span className="text-xs uppercase font-bold tracking-widest text-[#E8A33D]">
                   1. The Moon Overhead
                 </span>
@@ -430,15 +430,15 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 items-center gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 items-center gap-4 sm:gap-6">
                 <div className="flex justify-center sm:justify-start">
                   <MoonGraphic illumination={moon.illumination} phaseAngle={moon.phaseAngle} phaseName={moon.phaseName} size={100} />
                 </div>
-                <div className="sm:col-span-2 space-y-1">
-                  <div className="text-base font-fraunces font-bold text-[#E8A33D]">
+                <div className="sm:col-span-2 space-y-1.5 text-center sm:text-left">
+                  <div className="text-base sm:text-lg font-fraunces font-bold text-[#E8A33D]">
                     {moon.phaseName} (<CountUp to={moon.illumination} decimals={0} suffix="%" /> Lit)
                   </div>
-                  <p className="font-inter text-xs text-[#A89B8C] leading-relaxed">
+                  <p className="font-inter text-xs sm:text-sm text-[#A89B8C] leading-relaxed">
                     "{moon.poeticDescription}"
                   </p>
                 </div>
@@ -448,29 +448,29 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
               {(() => {
                 const moonTrait = getMoonPersonality(moon.illumination, moon.phaseName);
                 return (
-                  <div className="mt-3 pt-3 border-t border-dashed border-[#2D251E] bg-[#201A14]/80 p-3.5 rounded-xl border border-[#E8A33D]/30 space-y-1.5">
-                    <div className="flex items-center justify-between">
+                  <div className="mt-4 pt-4 border-t border-dashed border-[#2D251E] bg-[#201A14]/80 p-4 sm:p-5 rounded-2xl border border-[#E8A33D]/30 space-y-2">
+                    <div className="flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
                       <div className="flex items-center gap-1.5">
                         <span className="text-base">{moonTrait.badgeEmoji}</span>
-                        <span className="font-fraunces font-bold text-xs text-[#E8A33D]">
+                        <span className="font-fraunces font-bold text-xs sm:text-sm text-[#E8A33D]">
                           What Your Moon Phase Says About You
                         </span>
                       </div>
-                      <span className="text-[9px] uppercase font-mono px-2 py-0.5 rounded-full bg-[#120F0D] text-[#38BDF8] border border-[#38BDF8]/30 font-semibold">
+                      <span className="text-[9px] uppercase font-mono px-2.5 py-0.5 rounded-full bg-[#120F0D] text-[#38BDF8] border border-[#38BDF8]/30 font-semibold">
                         BuzzFeed Quiz Readout
                       </span>
                     </div>
 
-                    <div className="font-fraunces text-sm font-bold text-[#F5EBE0]">
+                    <div className="font-fraunces text-sm sm:text-base font-bold text-[#F5EBE0]">
                       {moonTrait.title}
                     </div>
 
-                    <p className="font-inter text-xs text-[#A89B8C] leading-relaxed">
+                    <p className="font-inter text-xs sm:text-sm text-[#A89B8C] leading-relaxed">
                       "{moonTrait.buzzfeedReadout}"
                     </p>
 
-                    <div className="pt-1 flex items-center gap-1.5 text-[10px] font-mono text-[#E8A33D]">
-                      <span className="px-2 py-0.5 rounded bg-[#120F0D] border border-[#E8A33D]/30 font-semibold">
+                    <div className="pt-1.5 flex items-center gap-1.5 text-[10px] font-mono text-[#E8A33D]">
+                      <span className="px-2.5 py-1 rounded-lg bg-[#120F0D] border border-[#E8A33D]/30 font-semibold">
                         ✨ Vibe: {moonTrait.shareablePill}
                       </span>
                     </div>
@@ -482,8 +482,8 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
 
           {/* SECTION 2: THE WEATHER */}
           {revealStep >= 2 && (
-            <div className="animate-fade-in-up bg-[#120F0D]/85 p-5 rounded-xl border border-[#2D251E] space-y-3">
-              <div className="flex items-center justify-between border-b border-[#2D251E] pb-2">
+            <div className="animate-fade-in-up bg-[#120F0D]/85 p-4.5 sm:p-6 rounded-2xl border border-[#2D251E] space-y-4">
+              <div className="flex items-center justify-between border-b border-[#2D251E] pb-2.5">
                 <span className="text-xs uppercase font-bold tracking-widest text-[#E8A33D] flex items-center gap-1.5">
                   <Thermometer className="w-3.5 h-3.5" />
                   <span>2. The Weather in {city}</span>
@@ -497,17 +497,17 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
 
               {weather ? (
                 <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <div className="text-xl font-bold font-mono text-[#F5EBE0]">
+                  <div className="space-y-1">
+                    <div className="text-xl sm:text-2xl font-bold font-mono text-[#F5EBE0]">
                       <CountUp to={weather.avgTempC} decimals={0} suffix="°C" />
                       <span className="text-xs font-normal text-[#A89B8C] ml-2">
                         ({weather.tempMinC}°C to {weather.tempMaxC}°C)
                       </span>
                     </div>
-                    <div className="text-xs font-semibold text-[#E8A33D]">{weather.condition}</div>
-                    <p className="font-inter text-xs text-[#A89B8C] mt-1">{weather.description}</p>
+                    <div className="text-xs sm:text-sm font-semibold text-[#E8A33D]">{weather.condition}</div>
+                    <p className="font-inter text-xs text-[#A89B8C] leading-relaxed">{weather.description}</p>
                   </div>
-                  <div className="text-3xl p-2.5 bg-[#201A14] rounded-xl border border-[#2D251E]">
+                  <div className="text-3xl sm:text-4xl p-3 bg-[#201A14] rounded-2xl border border-[#2D251E] shrink-0">
                     {weather.conditionIcon === 'sun' && '☀️'}
                     {weather.conditionIcon === 'rain' && '🌧️'}
                     {weather.conditionIcon === 'cloud' && '⛅'}
@@ -531,9 +531,9 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
 
           {/* SECTION 4: THE HEADLINE & YOUR ARRIVAL DAY SNAPSHOT */}
           {revealStep >= 4 && headline && (
-            <div className="animate-fade-in-up bg-[#120F0D]/85 rounded-xl border border-[#2D251E] overflow-hidden">
+            <div className="animate-fade-in-up bg-[#120F0D]/85 rounded-2xl border border-[#2D251E] overflow-hidden">
               {/* Newspaper masthead */}
-              <div className="flex items-center justify-between bg-[#201A14] px-4 py-2 border-b border-[#2D251E]">
+              <div className="flex items-center justify-between bg-[#201A14] px-4.5 py-2.5 border-b border-[#2D251E]">
                 <span className="text-xs uppercase font-bold tracking-widest text-[#E8A33D] flex items-center gap-1.5">
                   <Newspaper className="w-3.5 h-3.5" />
                   <span>4. Front Page · Historical & Arrival Day Snapshot</span>
@@ -541,24 +541,24 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
                 <span className="text-[10px] font-mono text-[#A89B8C]">{headline.main.sourcePaper}</span>
               </div>
 
-              <div className="p-4 space-y-4">
+              <div className="p-4.5 sm:p-6 space-y-5">
                 {/* MAIN LEAD STORY OF THAT ERA/DAY */}
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <div className="text-[9px] uppercase tracking-widest font-bold text-[#D65F4C] font-mono flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D65F4C] animate-pulse" />
                     LEAD HEADLINE · {headline.main.category}
                   </div>
-                  <div className="font-fraunces text-sm sm:text-base font-bold text-[#F5EBE0] border-l-2 border-[#E8A33D] pl-3 py-1 bg-[#201A14]/70 rounded-r-lg">
+                  <div className="font-fraunces text-sm sm:text-base font-bold text-[#F5EBE0] border-l-2 border-[#E8A33D] pl-3.5 py-1.5 bg-[#201A14]/70 rounded-r-xl leading-snug">
                     {headline.main.headlineText}
                   </div>
-                  <p className="font-inter text-xs text-[#A89B8C] leading-relaxed">
+                  <p className="font-inter text-xs sm:text-sm text-[#A89B8C] leading-relaxed">
                     {headline.main.description}
                   </p>
                 </div>
 
                 {/* EXACT ARRIVAL DAY SPECIAL SNAPSHOT */}
-                <div className="border-t border-dashed border-[#2D251E] pt-3">
-                  <div className="flex items-center justify-between mb-2.5">
+                <div className="border-t border-dashed border-[#2D251E] pt-4">
+                  <div className="flex items-center justify-between mb-3 flex-wrap gap-1">
                     <div className="text-[10px] uppercase tracking-widest font-bold text-[#E8A33D] font-mono flex items-center gap-1.5">
                       <Sparkles className="w-3 h-3 text-[#E8A33D]" />
                       <span>Special Highlights Of Your Arrival Day ({dayOfWeekStr})</span>
@@ -568,7 +568,7 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {getArrivalDayHighlights({
                       dob,
                       song: song?.song || null,
@@ -576,7 +576,7 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
                     }).map((hl, i) => (
                       <div
                         key={i}
-                        className="bg-[#201A14]/90 rounded-xl p-3 border border-[#2D251E] hover:border-[#E8A33D]/40 transition-all space-y-1 shadow-sm"
+                        className="bg-[#201A14]/90 rounded-xl p-3.5 border border-[#2D251E] hover:border-[#E8A33D]/40 transition-all space-y-1 shadow-sm"
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-1.5 overflow-hidden">
@@ -590,7 +590,7 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
                             {hl.tag}
                           </span>
                         </div>
-                        <p className="text-[11px] text-[#A89B8C] leading-snug">{hl.text}</p>
+                        <p className="text-[11px] text-[#A89B8C] leading-relaxed">{hl.text}</p>
                       </div>
                     ))}
                   </div>
@@ -603,9 +603,9 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
 
           {/* SECTION 5: WHAT EVERYDAY ESSENTIALS COST & TIME CAPSULE CALCULATOR */}
           {revealStep >= 5 && prices && (
-            <div className="animate-fade-in-up space-y-4">
-              <div className="bg-[#120F0D]/85 p-5 rounded-xl border border-[#2D251E] space-y-4">
-                <div className="flex items-center justify-between border-b border-[#2D251E] pb-2">
+            <div className="animate-fade-in-up space-y-5">
+              <div className="bg-[#120F0D]/85 p-4.5 sm:p-6 rounded-2xl border border-[#2D251E] space-y-4">
+                <div className="flex items-center justify-between border-b border-[#2D251E] pb-2.5">
                   <span className="text-xs uppercase font-bold tracking-widest text-[#E8A33D] flex items-center gap-1.5">
                     <ShoppingBag className="w-3.5 h-3.5" />
                     <span>5. Everyday Prices in {birthYear}</span>
@@ -613,35 +613,35 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
                   <span className="text-[10px] font-mono text-[#A89B8C]">RBI & Historical Reference</span>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  <SpotlightCard className="bg-[#201A14] p-3 rounded-xl border border-[#2D251E] text-center space-y-0.5">
-                    <div className="text-lg">🥛</div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                  <SpotlightCard className="bg-[#201A14] p-3.5 sm:p-4 rounded-2xl border border-[#2D251E] text-center space-y-1">
+                    <div className="text-xl">🥛</div>
                     <div className="text-[10px] text-[#A89B8C] uppercase font-semibold">1L Milk</div>
-                    <div className="font-mono text-sm font-bold text-[#E8A33D]">
+                    <div className="font-mono text-sm sm:text-base font-bold text-[#E8A33D]">
                       <CountUp to={prices.milk1L} prefix="₹" decimals={prices.milk1L < 10 ? 2 : 0} />
                     </div>
                   </SpotlightCard>
 
-                  <SpotlightCard className="bg-[#201A14] p-3 rounded-xl border border-[#2D251E] text-center space-y-0.5">
-                    <div className="text-lg">⛽</div>
+                  <SpotlightCard className="bg-[#201A14] p-3.5 sm:p-4 rounded-2xl border border-[#2D251E] text-center space-y-1">
+                    <div className="text-xl">⛽</div>
                     <div className="text-[10px] text-[#A89B8C] uppercase font-semibold">1L Petrol</div>
-                    <div className="font-mono text-sm font-bold text-[#E8A33D]">
+                    <div className="font-mono text-sm sm:text-base font-bold text-[#E8A33D]">
                       <CountUp to={prices.petrol1L} prefix="₹" decimals={prices.petrol1L < 10 ? 2 : 0} />
                     </div>
                   </SpotlightCard>
 
-                  <SpotlightCard className="bg-[#201A14] p-3 rounded-xl border border-[#2D251E] text-center space-y-0.5">
-                    <div className="text-lg">🎟️</div>
+                  <SpotlightCard className="bg-[#201A14] p-3.5 sm:p-4 rounded-2xl border border-[#2D251E] text-center space-y-1">
+                    <div className="text-xl">🎟️</div>
                     <div className="text-[10px] text-[#A89B8C] uppercase font-semibold">Cinema Ticket</div>
-                    <div className="font-mono text-sm font-bold text-[#E8A33D]">
+                    <div className="font-mono text-sm sm:text-base font-bold text-[#E8A33D]">
                       <CountUp to={prices.cinemaTicket} prefix="₹" decimals={prices.cinemaTicket < 10 ? 2 : 0} />
                     </div>
                   </SpotlightCard>
 
-                  <SpotlightCard className="bg-[#201A14] p-3 rounded-xl border border-[#2D251E] text-center space-y-0.5">
-                    <div className="text-lg">🪙</div>
+                  <SpotlightCard className="bg-[#201A14] p-3.5 sm:p-4 rounded-2xl border border-[#2D251E] text-center space-y-1">
+                    <div className="text-xl">🪙</div>
                     <div className="text-[10px] text-[#A89B8C] uppercase font-semibold">10g Gold (24K)</div>
-                    <div className="font-mono text-sm font-bold text-[#E8A33D]">
+                    <div className="font-mono text-sm sm:text-base font-bold text-[#E8A33D]">
                       <CountUp to={prices.gold10g} prefix="₹" decimals={0} />
                     </div>
                   </SpotlightCard>

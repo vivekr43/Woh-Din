@@ -11,12 +11,12 @@ export const RadioWohDin: React.FC<RadioWohDinProps> = ({ song, birthYear }) => 
   const radioFreq = ((birthYear % 50) + 88.0).toFixed(1);
 
   return (
-    <div className="bg-[#120F0D] p-5 rounded-2xl border-2 border-[#E8A33D]/40 space-y-4 shadow-2xl relative overflow-hidden">
+    <div className="bg-[#120F0D] p-4.5 sm:p-6 rounded-2xl border-2 border-[#E8A33D]/40 space-y-4 sm:space-y-5 shadow-2xl relative overflow-hidden">
       
       {/* Radio Header & Tuning Light */}
       <div className="flex items-center justify-between border-b border-[#2D251E] pb-3">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-[#E8A33D]/20 border border-[#E8A33D]/50 flex items-center justify-center text-[#E8A33D]">
+          <div className="w-8 h-8 rounded-full bg-[#E8A33D]/20 border border-[#E8A33D]/50 flex items-center justify-center text-[#E8A33D] shrink-0">
             <Radio className="w-4 h-4" />
           </div>
           <div>
@@ -30,19 +30,19 @@ export const RadioWohDin: React.FC<RadioWohDinProps> = ({ song, birthYear }) => 
         </div>
 
         {/* Vintage Tuning Lamp Indicator */}
-        <div className="flex items-center gap-2">
-          <span className="text-[10px] uppercase font-mono text-[#A89B8C]">Station Tuned</span>
+        <div className="flex items-center gap-1.5 shrink-0">
+          <span className="text-[9px] uppercase font-mono text-[#A89B8C] hidden sm:inline">Station Tuned</span>
           <div className="w-3 h-3 rounded-full border border-black bg-[#E8A33D] shadow-[0_0_12px_#E8A33D] animate-pulse" />
         </div>
       </div>
 
       {/* Analog Frequency Dial Display */}
-      <div className="bg-[#201A14] p-3 rounded-xl border border-[#2D251E] flex items-center justify-between font-mono text-xs text-[#E8A33D] relative overflow-hidden">
-        <div className="flex items-center gap-4">
+      <div className="bg-[#201A14] p-3.5 sm:p-4 rounded-2xl border border-[#2D251E] flex items-center justify-between font-mono text-xs text-[#E8A33D] relative overflow-hidden">
+        <div className="flex items-center gap-3">
           <span className="text-[10px] text-[#A89B8C]">MW / FM</span>
           <span className="font-bold text-sm tracking-wider text-[#F5EBE0]">{radioFreq} MHz</span>
         </div>
-        <div className="flex items-center gap-1 opacity-60 text-[10px] text-[#A89B8C]">
+        <div className="flex items-center gap-1 opacity-70 text-[10px] text-[#A89B8C] hidden xs:flex">
           <span>88</span><span>•</span><span>92</span><span>•</span>
           <span className="text-[#E8A33D] font-bold">[{radioFreq}]</span>
           <span>•</span><span>104</span><span>•</span><span>108</span>

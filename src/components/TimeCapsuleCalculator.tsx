@@ -27,7 +27,7 @@ export const TimeCapsuleCalculator: React.FC<TimeCapsuleCalculatorProps> = ({ bi
   const petrolLitersNow = price2026.petrol1L > 0 ? Math.floor(investAmount / price2026.petrol1L) : 0;
 
   return (
-    <div className="bg-[#120F0D] p-5 rounded-2xl border-2 border-[#E8A33D]/40 space-y-5 shadow-2xl">
+    <div className="bg-[#120F0D] p-4.5 sm:p-6 rounded-2xl border-2 border-[#E8A33D]/40 space-y-4 sm:space-y-6 shadow-2xl">
 
       {/* Header */}
       <div className="flex items-center justify-between border-b border-[#2D251E] pb-3">
