@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from './components/Navbar';
 import { InputForm, type FormSubmission } from './components/InputForm';
 import { CertificateCard } from './components/CertificateCard';
@@ -112,6 +113,8 @@ export function App() {
             Created with ❤️ by <a href="https://vivek-porfolio-dun.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-[#E8A33D] font-medium hover:underline">Vivek Ribadiya</a>
           </p>
         </footer>
+
+        <Analytics />
 
       </div>
     </>
