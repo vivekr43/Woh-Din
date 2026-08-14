@@ -226,100 +226,102 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
   });
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4 py-6 space-y-6">
-      
+    <div className="w-full max-w-3xl mx-auto px-4 py-8">
       {/* Top Action & Navigation Bar */}
-      <div className="no-print flex flex-wrap items-center justify-between gap-3">
+      <div className="no-print flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 bg-[#201A14]/80 p-3 sm:p-4 rounded-2xl border border-[#2D251E] backdrop-blur-md">
+        
         <MagneticButton
           onClick={onReset}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#201A14] hover:bg-[#2D251E] border border-[#2D251E] text-xs font-semibold text-[#A89B8C] hover:text-white transition-all cursor-pointer"
+          className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#201A14] hover:bg-[#2D251E] border border-[#2D251E] text-xs sm:text-sm font-semibold text-[#A89B8C] hover:text-[#F5EBE0] transition-all cursor-pointer w-full sm:w-auto"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Enter Different Date</span>
         </MagneticButton>
 
-        {/* Tone Toggle */}
-        <div className="flex items-center gap-1 bg-[#201A14] p-1 rounded-xl border border-[#2D251E]">
-          <button
-            onClick={() => setToneMode('nostalgic')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-              toneMode === 'nostalgic'
-                ? 'bg-[#E8A33D] text-[#120F0D] font-bold shadow-md'
-                : 'text-[#A89B8C] hover:text-[#F5EBE0]'
-            }`}
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Nostalgic</span>
-          </button>
+        <div className="flex flex-wrap items-center justify-between sm:justify-end gap-2.5 sm:gap-3 w-full sm:w-auto">
+          {/* Tone Toggle */}
+          <div className="flex items-center gap-1 bg-[#120F0D] p-1 rounded-xl border border-[#2D251E] flex-1 sm:flex-none justify-center">
+            <button
+              onClick={() => setToneMode('nostalgic')}
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                toneMode === 'nostalgic'
+                  ? 'bg-[#E8A33D] text-[#120F0D] shadow-md'
+                  : 'text-[#A89B8C] hover:text-[#F5EBE0]'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span>Nostalgic</span>
+            </button>
 
-          <button
-            onClick={() => setToneMode('roast')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-              toneMode === 'roast'
-                ? 'bg-[#D65F4C] text-white font-bold shadow-md shadow-[#D65F4C]/30 animate-pulse'
-                : 'text-[#A89B8C] hover:text-[#D65F4C]'
-            }`}
-          >
-            <Flame className="w-3.5 h-3.5" />
-            <span>Roast Me 🔥</span>
-          </button>
-        </div>
+            <button
+              onClick={() => setToneMode('roast')}
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                toneMode === 'roast'
+                  ? 'bg-[#D65F4C] text-white shadow-md shadow-[#D65F4C]/30 animate-pulse'
+                  : 'text-[#A89B8C] hover:text-[#D65F4C]'
+              }`}
+            >
+              <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span>Roast Me 🔥</span>
+            </button>
+          </div>
 
-        {/* Export Buttons */}
-        <div className="flex items-center gap-2">
-          <MagneticButton
-            onClick={handleShare}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#201A14] hover:bg-[#2D251E] border border-[#E8A33D]/40 text-xs font-semibold text-[#E8A33D] hover:text-white transition-all cursor-pointer"
-          >
-            <Share2 className="w-4 h-4" />
-            <span>{copySuccess ? 'Copied!' : 'Share'}</span>
-          </MagneticButton>
+          {/* Export Buttons */}
+          <div className="flex items-center gap-2 flex-1 sm:flex-none w-full sm:w-auto">
+            <MagneticButton
+              onClick={handleShare}
+              className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2.5 rounded-xl bg-[#120F0D] hover:bg-[#2D251E] border border-[#E8A33D]/40 text-xs sm:text-sm font-semibold text-[#E8A33D] hover:text-white transition-all cursor-pointer"
+            >
+              <Share2 className="w-4 h-4" />
+              <span>{copySuccess ? 'Copied!' : 'Share'}</span>
+            </MagneticButton>
 
-          <MagneticButton
-            onClick={handleDownloadStory}
-            disabled={isExportingStory}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#D65F4C] to-[#E8A33D] text-white font-semibold text-xs transition-all shadow-md hover:brightness-110 cursor-pointer disabled:opacity-50"
-          >
-            {isExportingStory ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Smartphone className="w-4 h-4" />}
-            <span>{isExportingStory ? 'Exporting...' : 'Story (9:16)'}</span>
-          </MagneticButton>
+            <MagneticButton
+              onClick={handleDownloadStory}
+              disabled={isExportingStory}
+              className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#D65F4C] to-[#E8A33D] text-white font-semibold text-xs sm:text-sm transition-all shadow-md hover:brightness-110 cursor-pointer disabled:opacity-50"
+            >
+              {isExportingStory ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Smartphone className="w-4 h-4" />}
+              <span>{isExportingStory ? 'Exporting...' : 'Story (9:16)'}</span>
+            </MagneticButton>
 
-          <MagneticButton
-            onClick={handleDownloadImage}
-            disabled={isExporting}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#E8A33D] hover:bg-[#F5B85D] text-[#120F0D] font-bold text-xs transition-all shadow-lg shadow-[#E8A33D]/20 cursor-pointer disabled:opacity-50"
-          >
-            {isExporting ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-            <span>{isExporting ? 'Exporting...' : 'Download Card'}</span>
-          </MagneticButton>
+            <MagneticButton
+              onClick={handleDownloadImage}
+              disabled={isExporting}
+              className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2.5 rounded-xl bg-[#E8A33D] hover:bg-[#F5B85D] text-[#120F0D] font-bold text-xs sm:text-sm transition-all shadow-lg shadow-[#E8A33D]/20 cursor-pointer disabled:opacity-50"
+            >
+              {isExporting ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
+              <span>{isExporting ? 'Exporting...' : 'Download Card'}</span>
+            </MagneticButton>
+          </div>
         </div>
       </div>
 
       {/* MAIN CERTIFICATE CARD DISPLAY CONTAINER */}
       <div 
-        className={`relative bg-[#1C1611]/95 p-6 sm:p-10 rounded-2xl border-2 shadow-2xl transition-all ${
+        className={`relative bg-[#1C1611]/95 p-5 sm:p-10 md:p-12 rounded-3xl border-2 shadow-2xl transition-all ${
           toneMode === 'roast' 
             ? 'border-[#D65F4C] shadow-[0_0_40px_rgba(214,95,76,0.35)]' 
-            : 'border-[#E8A33D]/60 shadow-[0_0_30px_rgba(232,163,61,0.2)]'
+            : 'border-[#E8A33D]/60 shadow-[0_0_35px_rgba(232,163,61,0.2)]'
         }`}
       >
         
         {/* Full Card Indian Background Art Overlay */}
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-10 pointer-events-none mix-blend-overlay rounded-2xl"
+          className="absolute inset-0 bg-cover bg-center opacity-10 pointer-events-none mix-blend-overlay rounded-3xl"
           style={{ backgroundImage: 'url("/indian_art_bg.jpg")' }}
         />
 
-        <div ref={certificateRef} className="space-y-7 relative z-10">
+        <div ref={certificateRef} className="space-y-8 sm:space-y-10 relative z-10">
           
           {/* SIGNATURE ELEMENT: FUNCTIONAL DIYA FLAME AT TOP */}
-          <div className="flex justify-center border-b border-[#2D251E]/80 pb-4">
+          <div className="flex justify-center border-b border-[#2D251E]/80 pb-6">
             <DiyaFlame progress={diyaProgressPercent} isRoastMode={toneMode === 'roast'} />
           </div>
 
           {/* Certificate Header Banner */}
-          <div className="text-center space-y-2 relative">
-            <div className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-[10px] uppercase font-bold tracking-widest ${
+          <div className="text-center space-y-3 relative">
+            <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] sm:text-xs uppercase font-bold tracking-widest ${
               toneMode === 'roast'
                 ? 'bg-[#D65F4C] text-white border-none shadow-lg shadow-[#D65F4C]/40'
                 : 'bg-[#120F0D] text-[#E8A33D] border border-[#E8A33D]/30'
@@ -327,11 +329,11 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
               <span>{toneMode === 'roast' ? '🔥 Official Roast of Arrival 🔥' : 'Certificate of Arrival'}</span>
             </div>
 
-            <h2 className="font-fraunces text-3xl sm:text-4xl font-extrabold tracking-wide uppercase">
+            <h2 className="font-fraunces text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wide uppercase">
               <ShinyText text={toneMode === 'roast' ? 'ROAST DIPLOMA' : 'WOH DIN'} />
             </h2>
 
-            <div className="font-fraunces text-base sm:text-xl text-[#F5EBE0]">
+            <div className="font-fraunces text-lg sm:text-2xl text-[#F5EBE0] leading-relaxed">
               {toneMode === 'roast' ? (
                 <span>Certified that <span className="font-bold text-[#D65F4C] underline decoration-[#D65F4C]/50">{name}</span> {roastData.headerSub}</span>
               ) : (
@@ -340,19 +342,19 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
             </div>
 
             {toneMode === 'roast' && (
-              <div className="pt-1">
-                <span className="inline-block bg-[#D65F4C]/20 border border-[#D65F4C] text-[#D65F4C] font-mono text-xs font-bold px-3.5 py-1 rounded-full shadow-sm">
+              <div className="pt-1.5">
+                <span className="inline-block bg-[#D65F4C]/20 border border-[#D65F4C] text-[#D65F4C] font-mono text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full shadow-sm">
                   {roastData.badgeTag}
                 </span>
               </div>
             )}
 
-            <div className="flex items-center justify-center gap-2 pt-1">
-              <span className="font-mono text-xs text-[#A89B8C]">
+            <div className="flex items-center justify-center gap-2 pt-2 flex-wrap">
+              <span className="font-mono text-xs sm:text-sm text-[#A89B8C]">
                 {formattedDateLong} {timeStr ? `• ${timeStr}` : ''}
               </span>
               {zodiac && (
-                <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-[#120F0D] text-[#E8A33D] border border-[#E8A33D]/30 font-mono">
+                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#120F0D] text-[#E8A33D] border border-[#E8A33D]/30 font-mono">
                   {zodiac.symbol} {zodiac.sunSign} / {zodiac.rashiName}
                 </span>
               )}
@@ -360,14 +362,14 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
           </div>
 
           {/* BORNHERE FEATURES: "Small things that belong only to you" & "You've been here ever since" */}
-          <div className={`p-4 sm:p-5 rounded-xl border text-center space-y-3 shadow-inner ${
+          <div className={`p-5 sm:p-7 rounded-2xl border text-center space-y-4 shadow-inner ${
             toneMode === 'roast' ? 'bg-[#1A100E] border-[#D65F4C]/50' : 'bg-[#120F0D]/90 border-[#E8A33D]/40'
           }`}>
-            <div className="text-[10px] uppercase tracking-[0.25em] font-mono text-[#E8A33D] font-bold">
+            <div className="text-xs uppercase tracking-[0.25em] font-mono text-[#E8A33D] font-bold">
               ✦ {toneMode === 'roast' ? 'Savage Stats That Belong Only To You' : 'Small things that belong only to you'} ✦
             </div>
 
-            <div className="font-fraunces text-base sm:text-lg text-[#F5EBE0]">
+            <div className="font-fraunces text-base sm:text-xl text-[#F5EBE0] leading-relaxed">
               {toneMode === 'roast' ? (
                 <span className="text-[#D65F4C] font-semibold">{roastData.daysAliveSubtitle}</span>
               ) : (
@@ -375,19 +377,19 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
               )}
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-3 pt-1 text-xs font-mono text-[#A89B8C]">
-              <span className="flex items-center gap-1.5 bg-[#201A14] px-3 py-1 rounded-full border border-[#2D251E]">
-                <Clock className="w-3.5 h-3.5 text-[#E8A33D]" />
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2 text-xs sm:text-sm font-mono text-[#A89B8C]">
+              <span className="flex items-center gap-2 bg-[#201A14] px-3.5 py-1.5 rounded-full border border-[#2D251E]">
+                <Clock className="w-4 h-4 text-[#E8A33D]" />
                 <span><CountUp to={daysInfo.weeks} decimals={0} /> weeks alive</span>
               </span>
 
-              <span className="flex items-center gap-1.5 bg-[#201A14] px-3 py-1 rounded-full border border-[#2D251E]">
-                <Sunrise className="w-3.5 h-3.5 text-[#E8A33D]" />
+              <span className="flex items-center gap-2 bg-[#201A14] px-3.5 py-1.5 rounded-full border border-[#2D251E]">
+                <Sunrise className="w-4 h-4 text-[#E8A33D]" />
                 <span><CountUp to={daysInfo.days} decimals={0} /> Sunrises & Sunsets</span>
               </span>
 
-              <span className="flex items-center gap-1.5 bg-[#201A14] px-3 py-1 rounded-full border border-[#2D251E]">
-                <Moon className="w-3.5 h-3.5 text-[#38BDF8]" />
+              <span className="flex items-center gap-2 bg-[#201A14] px-3.5 py-1.5 rounded-full border border-[#2D251E]">
+                <Moon className="w-4 h-4 text-[#38BDF8]" />
                 <span><CountUp to={Math.floor(daysInfo.days / 29.53)} decimals={0} /> Full Moons</span>
               </span>
 
@@ -396,27 +398,27 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
           </div>
 
           {/* QUOTE OF THAT DAY / ERA SECTION */}
-          <div className={`p-4 sm:p-5 rounded-xl border space-y-2 relative overflow-hidden shadow-md ${
+          <div className={`p-5 sm:p-7 rounded-2xl border space-y-3 relative overflow-hidden shadow-md my-6 ${
             toneMode === 'roast' ? 'bg-[#1A100E] border-[#D65F4C]/50' : 'bg-[#120F0D]/90 border-[#E8A33D]/40'
           }`}>
-            <div className="flex items-center justify-between border-b border-[#2D251E] pb-2">
+            <div className="flex items-center justify-between border-b border-[#2D251E] pb-2.5">
               <span className="text-xs uppercase font-bold tracking-widest text-[#E8A33D] flex items-center gap-1.5 font-mono">
-                <Quote className="w-3.5 h-3.5 text-[#E8A33D]" />
+                <Quote className="w-4 h-4 text-[#E8A33D]" />
                 <span>{toneMode === 'roast' ? '🔥 Roast Verdict' : 'Quote of That Arrival Day & Era'}</span>
               </span>
-              <span className="text-[10px] font-mono text-[#A89B8C]">{toneMode === 'roast' ? 'Savage Reality Check' : 'Wisdom & Heritage Gazette'}</span>
+              <span className="text-[10px] sm:text-xs font-mono text-[#A89B8C]">{toneMode === 'roast' ? 'Savage Reality Check' : 'Wisdom & Heritage Gazette'}</span>
             </div>
-            <blockquote className={`font-fraunces text-sm sm:text-base italic border-l-2 pl-3 py-1 my-2 ${
+            <blockquote className={`font-fraunces text-base sm:text-lg italic border-l-3 pl-4 py-1.5 my-3 leading-relaxed ${
               toneMode === 'roast' ? 'text-[#D65F4C] border-[#D65F4C]' : 'text-[#F5EBE0] border-[#E8A33D]'
             }`}>
               "{toneMode === 'roast' ? roastData.quoteRoast : getQuoteForDate(dob).quote}"
             </blockquote>
-              {!toneMode && (
-                <div className="text-right text-xs font-mono text-[#E8A33D] font-semibold">
-                  — {getQuoteForDate(dob).author} <span className="text-[#A89B8C] font-normal">({getQuoteForDate(dob).context})</span>
-                </div>
-              )}
-            </div>
+            {!toneMode && (
+              <div className="text-right text-xs sm:text-sm font-mono text-[#E8A33D] font-semibold pt-1">
+                — {getQuoteForDate(dob).author} <span className="text-[#A89B8C] font-normal">({getQuoteForDate(dob).context})</span>
+              </div>
+            )}
+          </div>
 
           {/* SECTION 1: THE MOON OVERHEAD */}
           {revealStep >= 1 && moon && (

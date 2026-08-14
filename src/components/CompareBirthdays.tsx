@@ -132,32 +132,32 @@ export const CompareBirthdays: React.FC = () => {
       </div>
 
       {/* Input Form Dual Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-[#201A14] p-6 rounded-2xl border border-[#E8A33D]/30 shadow-2xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
         
         {/* Person 1 Inputs */}
-        <div className="space-y-4 p-4 rounded-xl bg-[#120F0D] border border-[#2D251E]">
-          <h3 className="font-fraunces text-base font-bold text-[#E8A33D] border-b border-[#2D251E] pb-2 flex items-center justify-between">
+        <div className="space-y-5 p-5 sm:p-6 rounded-2xl bg-[#120F0D] border border-[#2D251E] shadow-xl">
+          <h3 className="font-fraunces text-base sm:text-lg font-bold text-[#E8A33D] border-b border-[#2D251E] pb-2.5 flex items-center justify-between">
             <span>Person 1</span>
             <span className="text-xs font-mono text-[#A89B8C]">First Arrival</span>
           </h3>
 
           <div>
-            <label className="block text-xs text-[#A89B8C] uppercase mb-1">Name</label>
+            <label className="block text-xs text-[#A89B8C] uppercase mb-1.5 font-semibold">Name</label>
             <input
               type="text"
               value={person1.name}
               onChange={e => setPerson1({ ...person1, name: e.target.value })}
-              className="w-full bg-[#201A14] text-[#F5EBE0] px-3.5 py-2 rounded-lg border border-[#2D251E] focus:border-[#E8A33D] outline-none text-sm"
+              className="w-full bg-[#201A14] text-[#F5EBE0] px-4 py-2.5 sm:py-3 rounded-xl border border-[#2D251E] focus:border-[#E8A33D] outline-none text-sm sm:text-base"
             />
           </div>
 
           <div>
-            <label className="block text-xs text-[#A89B8C] uppercase mb-1">Birth Date</label>
-            <div className="grid grid-cols-3 gap-2">
+            <label className="block text-xs text-[#A89B8C] uppercase mb-1.5 font-semibold">Birth Date</label>
+            <div className="grid grid-cols-3 gap-2.5">
               <select
                 value={person1.day}
                 onChange={e => setPerson1({ ...person1, day: Number(e.target.value) })}
-                className="bg-[#201A14] text-[#F5EBE0] p-2 rounded-lg border border-[#2D251E] outline-none text-xs font-mono"
+                className="bg-[#201A14] text-[#F5EBE0] p-2.5 sm:p-3 rounded-xl border border-[#2D251E] outline-none text-xs sm:text-sm font-mono"
               >
                 {daysList.map(d => <option key={d} value={d}>Day {d}</option>)}
               </select>
@@ -165,7 +165,7 @@ export const CompareBirthdays: React.FC = () => {
               <select
                 value={person1.month}
                 onChange={e => setPerson1({ ...person1, month: Number(e.target.value) })}
-                className="bg-[#201A14] text-[#F5EBE0] p-2 rounded-lg border border-[#2D251E] outline-none text-xs"
+                className="bg-[#201A14] text-[#F5EBE0] p-2.5 sm:p-3 rounded-xl border border-[#2D251E] outline-none text-xs sm:text-sm"
               >
                 {MONTH_NAMES.map((m, idx) => <option key={m} value={idx + 1}>{m}</option>)}
               </select>
@@ -173,7 +173,7 @@ export const CompareBirthdays: React.FC = () => {
               <select
                 value={person1.year}
                 onChange={e => setPerson1({ ...person1, year: Number(e.target.value) })}
-                className="bg-[#201A14] text-[#E8A33D] p-2 rounded-lg border border-[#2D251E] outline-none text-xs font-mono font-bold"
+                className="bg-[#201A14] text-[#E8A33D] p-2.5 sm:p-3 rounded-xl border border-[#2D251E] outline-none text-xs sm:text-sm font-mono font-bold"
               >
                 {yearsList.map(y => <option key={y} value={y}>{y}</option>)}
               </select>
@@ -181,40 +181,40 @@ export const CompareBirthdays: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs text-[#A89B8C] uppercase mb-1">Birth City</label>
+            <label className="block text-xs text-[#A89B8C] uppercase mb-1.5 font-semibold">Birth City</label>
             <input
               type="text"
               value={person1.city}
               onChange={e => setPerson1({ ...person1, city: e.target.value })}
-              className="w-full bg-[#201A14] text-[#F5EBE0] px-3.5 py-2 rounded-lg border border-[#2D251E] focus:border-[#E8A33D] outline-none text-sm"
+              className="w-full bg-[#201A14] text-[#F5EBE0] px-4 py-2.5 sm:py-3 rounded-xl border border-[#2D251E] focus:border-[#E8A33D] outline-none text-sm sm:text-base"
             />
           </div>
         </div>
 
         {/* Person 2 Inputs */}
-        <div className="space-y-4 p-4 rounded-xl bg-[#120F0D] border border-[#2D251E]">
-          <h3 className="font-fraunces text-base font-bold text-[#E8A33D] border-b border-[#2D251E] pb-2 flex items-center justify-between">
+        <div className="space-y-5 p-5 sm:p-6 rounded-2xl bg-[#120F0D] border border-[#2D251E] shadow-xl">
+          <h3 className="font-fraunces text-base sm:text-lg font-bold text-[#E8A33D] border-b border-[#2D251E] pb-2.5 flex items-center justify-between">
             <span>Person 2</span>
             <span className="text-xs font-mono text-[#A89B8C]">Second Arrival</span>
           </h3>
 
           <div>
-            <label className="block text-xs text-[#A89B8C] uppercase mb-1">Name</label>
+            <label className="block text-xs text-[#A89B8C] uppercase mb-1.5 font-semibold">Name</label>
             <input
               type="text"
               value={person2.name}
               onChange={e => setPerson2({ ...person2, name: e.target.value })}
-              className="w-full bg-[#201A14] text-[#F5EBE0] px-3.5 py-2 rounded-lg border border-[#2D251E] focus:border-[#E8A33D] outline-none text-sm"
+              className="w-full bg-[#201A14] text-[#F5EBE0] px-4 py-2.5 sm:py-3 rounded-xl border border-[#2D251E] focus:border-[#E8A33D] outline-none text-sm sm:text-base"
             />
           </div>
 
           <div>
-            <label className="block text-xs text-[#A89B8C] uppercase mb-1">Birth Date</label>
-            <div className="grid grid-cols-3 gap-2">
+            <label className="block text-xs text-[#A89B8C] uppercase mb-1.5 font-semibold">Birth Date</label>
+            <div className="grid grid-cols-3 gap-2.5">
               <select
                 value={person2.day}
                 onChange={e => setPerson2({ ...person2, day: Number(e.target.value) })}
-                className="bg-[#201A14] text-[#F5EBE0] p-2 rounded-lg border border-[#2D251E] outline-none text-xs font-mono"
+                className="bg-[#201A14] text-[#F5EBE0] p-2.5 sm:p-3 rounded-xl border border-[#2D251E] outline-none text-xs sm:text-sm font-mono"
               >
                 {daysList.map(d => <option key={d} value={d}>Day {d}</option>)}
               </select>
@@ -222,7 +222,7 @@ export const CompareBirthdays: React.FC = () => {
               <select
                 value={person2.month}
                 onChange={e => setPerson2({ ...person2, month: Number(e.target.value) })}
-                className="bg-[#201A14] text-[#F5EBE0] p-2 rounded-lg border border-[#2D251E] outline-none text-xs"
+                className="bg-[#201A14] text-[#F5EBE0] p-2.5 sm:p-3 rounded-xl border border-[#2D251E] outline-none text-xs sm:text-sm"
               >
                 {MONTH_NAMES.map((m, idx) => <option key={m} value={idx + 1}>{m}</option>)}
               </select>
@@ -230,7 +230,7 @@ export const CompareBirthdays: React.FC = () => {
               <select
                 value={person2.year}
                 onChange={e => setPerson2({ ...person2, year: Number(e.target.value) })}
-                className="bg-[#201A14] text-[#E8A33D] p-2 rounded-lg border border-[#2D251E] outline-none text-xs font-mono font-bold"
+                className="bg-[#201A14] text-[#E8A33D] p-2.5 sm:p-3 rounded-xl border border-[#2D251E] outline-none text-xs sm:text-sm font-mono font-bold"
               >
                 {yearsList.map(y => <option key={y} value={y}>{y}</option>)}
               </select>
@@ -238,12 +238,12 @@ export const CompareBirthdays: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs text-[#A89B8C] uppercase mb-1">Birth City</label>
+            <label className="block text-xs text-[#A89B8C] uppercase mb-1.5 font-semibold">Birth City</label>
             <input
               type="text"
               value={person2.city}
               onChange={e => setPerson2({ ...person2, city: e.target.value })}
-              className="w-full bg-[#201A14] text-[#F5EBE0] px-3.5 py-2 rounded-lg border border-[#2D251E] focus:border-[#E8A33D] outline-none text-sm"
+              className="w-full bg-[#201A14] text-[#F5EBE0] px-4 py-2.5 sm:py-3 rounded-xl border border-[#2D251E] focus:border-[#E8A33D] outline-none text-sm sm:text-base"
             />
           </div>
         </div>
@@ -251,7 +251,7 @@ export const CompareBirthdays: React.FC = () => {
       </div>
 
       {/* COMPARISON RESULTS SUMMARY BOX */}
-      <div className={`p-6 rounded-2xl border transition-all space-y-6 ${
+      <div className={`p-5 sm:p-8 rounded-3xl border transition-all space-y-6 sm:space-y-8 ${
         toneMode === 'roast'
           ? 'bg-[#1C1210] border-[#D65F4C] shadow-[0_0_35px_rgba(214,95,76,0.3)]'
           : 'bg-[#201A14] border-[#E8A33D]/40 shadow-2xl'
