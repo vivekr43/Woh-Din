@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-base: #120F0D;
+    --bg-card: #201A14;
+    --accent-marigold: #E8A33D;
+    --accent-emerald: #123A2B;
+    --accent-kumkum: #D65F4C;
+    --text-primary: #F5EBE0;
+    --text-muted: #A89B8C;
+
+    --font-fraunces: 'Fraunces', serif;
+    --font-inter: 'Inter', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: var(--font-inter);
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Touch Device Optimization & Smooth GPU Acceleration */
+@media (max-width: 640px) {
+  button, input, select {
+    min-height: 42px;
+  }
+}
+
+.gpu-accelerated {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Typography Utilities */
+.font-fraunces {
+  font-family: 'Fraunces', serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Date picker indicator styling on warm dark charcoal */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.85) sepia(1) saturate(5) hue-rotate(5deg);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  background-color: rgba(232, 163, 61, 0.2);
+}
+
+/* Indian Traditional Art Cards & Borders */
+.dusk-card {
+  background-color: #201A14;
+  border: 1px solid rgba(232, 163, 61, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(232, 163, 61, 0.1);
+}
+
+.dusk-card-roast {
+  background-color: #201A14;
+  border: 1px solid rgba(214, 95, 76, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(214, 95, 76, 0.15);
+}
+
+.indian-art-border {
+  border: 3px double rgba(232, 163, 61, 0.5);
+}
+
+.marigold-gradient-text {
+  background: linear-gradient(135deg, #FFF5E4 0%, #E8A33D 50%, #C8821F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.kumkum-gradient-text {
+  background: linear-gradient(135deg, #FFD5CE 0%, #D65F4C 50%, #A83625 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.marigold-gradient-bg {
+  background: linear-gradient(135deg, #E8A33D 0%, #F5B85D 50%, #C8821F 100%);
+}
+
+.kumkum-gradient-bg {
+  background: linear-gradient(135deg, #D65F4C 0%, #E57967 50%, #A83625 100%);
+}
+
+/* Flame Animations */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) rotate(-1deg);
+    opacity: 0.95;
+  }
+  25% {
+    transform: scale(1.08) rotate(1deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.96) rotate(-2deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: scale(1.04) rotate(2deg);
+    opacity: 1;
+  }
+}
+
+.animate-flame {
+  animation: flameFlicker 1.8s ease-in-out infinite;
+}
+
+/* Staggered Reveal Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #120F0D;
+}
+::-webkit-scrollbar-thumb {
+  background: #2D251E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E8A33D;
+}
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
