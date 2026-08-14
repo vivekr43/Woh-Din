@@ -14,38 +14,38 @@ export const RadioWohDin: React.FC<RadioWohDinProps> = ({ song, birthYear }) => 
     <div className="bg-[#120F0D] p-4.5 sm:p-6 rounded-2xl border-2 border-[#E8A33D]/40 space-y-4 sm:space-y-5 shadow-2xl relative overflow-hidden">
       
       {/* Radio Header & Tuning Light */}
-      <div className="flex items-center justify-between border-b border-[#2D251E] pb-3">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-[#E8A33D]/20 border border-[#E8A33D]/50 flex items-center justify-center text-[#E8A33D] shrink-0">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#2D251E] pb-3">
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-full bg-[#E8A33D]/20 border border-[#E8A33D]/50 flex items-center justify-center text-[#E8A33D] shrink-0">
             <Radio className="w-4 h-4" />
           </div>
           <div>
-            <div className="font-fraunces text-xs uppercase font-bold tracking-wider text-[#E8A33D]">
-              3. Radio Woh Din • Aakashvani Era Dial
+            <div className="font-fraunces text-sm sm:text-base font-bold text-[#E8A33D]">
+              3. Radio Woh Din (Aakashvani Era)
             </div>
-            <div className="text-[10px] text-[#A89B8C] font-mono">
-              Binaca Geetmala Broadcast Chart ({song.year})
+            <div className="text-xs text-[#A89B8C] font-mono">
+              Binaca Geetmala Chart • {song.year}
             </div>
           </div>
         </div>
 
         {/* Vintage Tuning Lamp Indicator */}
-        <div className="flex items-center gap-1.5 shrink-0">
-          <span className="text-[9px] uppercase font-mono text-[#A89B8C] hidden sm:inline">Station Tuned</span>
-          <div className="w-3 h-3 rounded-full border border-black bg-[#E8A33D] shadow-[0_0_12px_#E8A33D] animate-pulse" />
+        <div className="flex items-center gap-2 self-start sm:self-auto pt-1 sm:pt-0">
+          <span className="text-[10px] uppercase font-mono text-[#A89B8C]">Station Tuned</span>
+          <div className="w-2.5 h-2.5 rounded-full border border-black bg-[#E8A33D] shadow-[0_0_12px_#E8A33D] animate-pulse" />
         </div>
       </div>
 
       {/* Analog Frequency Dial Display */}
-      <div className="bg-[#201A14] p-3.5 sm:p-4 rounded-2xl border border-[#2D251E] flex items-center justify-between font-mono text-xs text-[#E8A33D] relative overflow-hidden">
+      <div className="bg-[#201A14] p-3.5 sm:p-4 rounded-xl border border-[#2D251E] flex items-center justify-between font-mono text-xs text-[#E8A33D]">
         <div className="flex items-center gap-3">
-          <span className="text-[10px] text-[#A89B8C]">MW / FM</span>
-          <span className="font-bold text-sm tracking-wider text-[#F5EBE0]">{radioFreq} MHz</span>
+          <span className="text-[11px] text-[#A89B8C]">MW / FM</span>
+          <span className="font-bold text-sm text-[#F5EBE0]">{radioFreq} MHz</span>
         </div>
-        <div className="flex items-center gap-1 opacity-70 text-[10px] text-[#A89B8C] hidden xs:flex">
-          <span>88</span><span>•</span><span>92</span><span>•</span>
+        <div className="hidden sm:flex items-center gap-1.5 opacity-70 text-[10px] text-[#A89B8C]">
+          <span>88</span><span>•</span>
           <span className="text-[#E8A33D] font-bold">[{radioFreq}]</span>
-          <span>•</span><span>104</span><span>•</span><span>108</span>
+          <span>•</span><span>108</span>
         </div>
       </div>
 

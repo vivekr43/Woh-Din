@@ -423,11 +423,11 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
           {/* SECTION 1: THE MOON OVERHEAD */}
           {revealStep >= 1 && moon && (
             <div className="animate-fade-in-up bg-[#120F0D]/85 p-4.5 sm:p-6 rounded-2xl border border-[#2D251E] space-y-4">
-              <div className="flex items-center justify-between border-b border-[#2D251E] pb-2.5">
-                <span className="text-xs uppercase font-bold tracking-widest text-[#E8A33D]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-[#2D251E] pb-2.5">
+                <span className="font-fraunces text-sm sm:text-base font-bold text-[#E8A33D]">
                   1. The Moon Overhead
                 </span>
-                <span className="text-[10px] font-mono text-[#A89B8C]">
+                <span className="text-xs font-mono text-[#A89B8C]">
                   Astronomical Model • {moon.tithiName}
                 </span>
               </div>
@@ -451,14 +451,14 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
                 const moonTrait = getMoonPersonality(moon.illumination, moon.phaseName);
                 return (
                   <div className="mt-4 pt-4 border-t border-dashed border-[#2D251E] bg-[#201A14]/80 p-4 sm:p-5 rounded-2xl border border-[#E8A33D]/30 space-y-2">
-                    <div className="flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                       <div className="flex items-center gap-1.5">
                         <span className="text-base">{moonTrait.badgeEmoji}</span>
                         <span className="font-fraunces font-bold text-xs sm:text-sm text-[#E8A33D]">
                           What Your Moon Phase Says About You
                         </span>
                       </div>
-                      <span className="text-[9px] uppercase font-mono px-2.5 py-0.5 rounded-full bg-[#120F0D] text-[#38BDF8] border border-[#38BDF8]/30 font-semibold">
+                      <span className="text-[10px] uppercase font-mono px-2.5 py-0.5 rounded-full bg-[#120F0D] text-[#38BDF8] border border-[#38BDF8]/30 font-semibold self-start sm:self-auto">
                         BuzzFeed Quiz Readout
                       </span>
                     </div>
@@ -485,14 +485,14 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
           {/* SECTION 2: THE WEATHER */}
           {revealStep >= 2 && (
             <div className="animate-fade-in-up bg-[#120F0D]/85 p-4.5 sm:p-6 rounded-2xl border border-[#2D251E] space-y-4">
-              <div className="flex items-center justify-between border-b border-[#2D251E] pb-2.5">
-                <span className="text-xs uppercase font-bold tracking-widest text-[#E8A33D] flex items-center gap-1.5">
-                  <Thermometer className="w-3.5 h-3.5" />
-                  <span>2. The Weather in {city}</span>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-[#2D251E] pb-2.5">
+                <span className="font-fraunces text-sm sm:text-base font-bold text-[#E8A33D] flex items-center gap-1.5">
+                  <Thermometer className="w-4 h-4 text-[#E8A33D]" />
+                  <span>2. Weather in {city}</span>
                 </span>
                 {weather && (
-                  <span className="text-[10px] font-mono text-[#A89B8C]">
-                    {weather.isArchive ? 'Open-Meteo Historical Archive' : 'Climate Average Model'}
+                  <span className="text-xs font-mono text-[#A89B8C]">
+                    {weather.isArchive ? 'Open-Meteo Climate Archive' : 'Climate Model'}
                   </span>
                 )}
               </div>
@@ -535,22 +535,22 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
           {revealStep >= 4 && headline && (
             <div className="animate-fade-in-up bg-[#120F0D]/85 rounded-2xl border border-[#2D251E] overflow-hidden">
               {/* Newspaper masthead */}
-              <div className="flex items-center justify-between bg-[#201A14] px-4.5 py-2.5 border-b border-[#2D251E]">
-                <span className="text-xs uppercase font-bold tracking-widest text-[#E8A33D] flex items-center gap-1.5">
-                  <Newspaper className="w-3.5 h-3.5" />
-                  <span>4. Front Page · Historical & Arrival Day Snapshot</span>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 bg-[#201A14] px-4.5 py-3 border-b border-[#2D251E]">
+                <span className="font-fraunces text-sm sm:text-base font-bold text-[#E8A33D] flex items-center gap-1.5">
+                  <Newspaper className="w-4 h-4 text-[#E8A33D]" />
+                  <span>4. Front Page & Arrival Headlines</span>
                 </span>
-                <span className="text-[10px] font-mono text-[#A89B8C]">{headline.main.sourcePaper}</span>
+                <span className="text-xs font-mono text-[#A89B8C]">{headline.main.sourcePaper}</span>
               </div>
 
               <div className="p-4.5 sm:p-6 space-y-5">
                 {/* MAIN LEAD STORY OF THAT ERA/DAY */}
                 <div className="space-y-2">
-                  <div className="text-[9px] uppercase tracking-widest font-bold text-[#D65F4C] font-mono flex items-center gap-1.5">
+                  <div className="text-[10px] uppercase tracking-wider font-bold text-[#D65F4C] font-mono flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D65F4C] animate-pulse" />
                     LEAD HEADLINE · {headline.main.category}
                   </div>
-                  <div className="font-fraunces text-sm sm:text-base font-bold text-[#F5EBE0] border-l-2 border-[#E8A33D] pl-3.5 py-1.5 bg-[#201A14]/70 rounded-r-xl leading-snug">
+                  <div className="font-fraunces text-base sm:text-lg font-bold text-[#F5EBE0] border-l-3 border-[#E8A33D] pl-3.5 py-1.5 bg-[#201A14]/70 rounded-r-xl leading-relaxed">
                     {headline.main.headlineText}
                   </div>
                   <p className="font-inter text-xs sm:text-sm text-[#A89B8C] leading-relaxed">
@@ -561,11 +561,11 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
                 {/* EXACT ARRIVAL DAY SPECIAL SNAPSHOT */}
                 <div className="border-t border-dashed border-[#2D251E] pt-4">
                   <div className="flex items-center justify-between mb-3 flex-wrap gap-1">
-                    <div className="text-[10px] uppercase tracking-widest font-bold text-[#E8A33D] font-mono flex items-center gap-1.5">
+                    <div className="text-[10px] uppercase tracking-wider font-bold text-[#E8A33D] font-mono flex items-center gap-1.5">
                       <Sparkles className="w-3 h-3 text-[#E8A33D]" />
                       <span>Special Highlights Of Your Arrival Day ({dayOfWeekStr})</span>
                     </div>
-                    <span className="text-[9px] font-mono text-[#A89B8C]">
+                    <span className="text-[10px] font-mono text-[#A89B8C]">
                       {dob.getDate()} {dob.toLocaleString('default', { month: 'short' })} {dob.getFullYear()}
                     </span>
                   </div>
@@ -607,12 +607,12 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
           {revealStep >= 5 && prices && (
             <div className="animate-fade-in-up space-y-5">
               <div className="bg-[#120F0D]/85 p-4.5 sm:p-6 rounded-2xl border border-[#2D251E] space-y-4">
-                <div className="flex items-center justify-between border-b border-[#2D251E] pb-2.5">
-                  <span className="text-xs uppercase font-bold tracking-widest text-[#E8A33D] flex items-center gap-1.5">
-                    <ShoppingBag className="w-3.5 h-3.5" />
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-[#2D251E] pb-2.5">
+                  <span className="font-fraunces text-sm sm:text-base font-bold text-[#E8A33D] flex items-center gap-1.5">
+                    <ShoppingBag className="w-4 h-4 text-[#E8A33D]" />
                     <span>5. Everyday Prices in {birthYear}</span>
                   </span>
-                  <span className="text-[10px] font-mono text-[#A89B8C]">RBI & Historical Reference</span>
+                  <span className="text-xs font-mono text-[#A89B8C]">RBI & Historical Reference</span>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
