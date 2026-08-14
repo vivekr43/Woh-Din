@@ -29,6 +29,12 @@ export interface DualRoastResult {
   seniorityRoast: string;
   economicRoast: string;
   songRoast: string;
+  diwaliRoast: string;
+  diwalis1: number;
+  diwalis2: number;
+  diwaliDiff: number;
+  olderName: string;
+  youngerName: string;
   verdict: string;
 }
 
@@ -317,6 +323,12 @@ export function generateDualRoast({
   const olderYear = Math.min(p1Year, p2Year);
   const youngerYear = Math.max(p1Year, p2Year);
 
+  // Current year for Diwali calculations
+  const CURRENT_YEAR = 2026;
+  const diwalis1 = CURRENT_YEAR - p1Year;
+  const diwalis2 = CURRENT_YEAR - p2Year;
+  const diwaliDiff = Math.abs(diwalis1 - diwalis2);
+
   // High dispersion prime hash formula to ensure unique output per combination
   const name1Hash = hashString(name1);
   const name2Hash = hashString(name2);
@@ -326,7 +338,15 @@ export function generateDualRoast({
   const primeHash = (p1Year * 7919) + (p2Year * 3571) + (name1Hash * 1307) + (name2Hash * 523) + (city1Hash * 191) + (city2Hash * 97) + hashString(p1Song + p2Song);
   const h = Math.abs(primeHash);
 
-  // 1. DYNAMIC SENIORITY ROASTS (High Variety)
+  // 🪔 ICONIC INDIAN DIWALI SENIORITY ROAST: "Tujhse Zyada Diwaliyan Dekhi Hain Maine!"
+  let diwaliRoast = "";
+  if (diff === 0) {
+    diwaliRoast = `🪔 "Tujhse Zyada Diwaliyan? Bilkul Nahi!" Both ${name1} and ${name2} have celebrated the exact same ${diwalis1} Diwalis (${p1Year}–${CURRENT_YEAR}). Zero Diwali flex allowed in arguments!`;
+  } else {
+    diwaliRoast = `🪔 "Tujhse ${diwaliDiff} Diwaliyan ZYADA dekhi hain maine!" ${older} has celebrated ${diwalis1 > diwalis2 ? diwalis1 : diwalis2} Diwalis compared to ${younger}'s ${diwalis1 < diwalis2 ? diwalis1 : diwalis2} Diwalis. That's ${diwaliDiff} extra years of phooljhadi & kaju katli!`;
+  }
+
+  // 1. DYNAMIC SENIORITY ROASTS
   let seniority = "";
   if (diff === 0) {
     const sameYearRoasts = [
@@ -371,8 +391,7 @@ export function generateDualRoast({
     `${older} arrived when petrol was ₹${minPetrol}/L in ${olderYear}. By the time ${younger} arrived in ${youngerYear} (petrol ₹${maxPetrol}/L), inflation had already taken over both your savings and your sense of humor.`,
     `In ${olderYear}, petrol was a cheap ₹${minPetrol}/L for ${p1Year < p2Year ? name1 : name2}. Fast forward to ${youngerYear}, petrol jumped by ₹${petrolDiff}/L — proving ${younger} was an expensive addition from Day 1.`,
     `When ${name1} was born in ${p1Year}, petrol cost ₹${p1Petrol}/L. When ${name2} arrived in ${p2Year}, it hit ₹${p2Petrol}/L. Your combined inflation trajectory is scarier than any market crash.`,
-    `${p1Name}'s birth year (${p1Year}) petrol: ₹${p1Petrol}/L. ${p2Name}'s birth year (${p2Year}) petrol: ₹${p2Petrol}/L. Between the two of you, you've consumed more fuel and resources than a tier-1 metro city.`,
-    `In ${p1Year}, petrol was ₹${p1Petrol}/L; by ${p2Year}, it hit ₹${p2Petrol}/L. The economy was collapsing, but ${name1} and ${name2} decided to join the party anyway.`
+    `${p1Name}'s birth year (${p1Year}) petrol: ₹${p1Petrol}/L. ${p2Name}'s birth year (${p2Year}) petrol: ₹${p2Petrol}/L. Between the two of you, you've consumed more fuel and resources than a tier-1 metro city.`
   ];
   const economicRoast = econOptions[h % econOptions.length];
 
@@ -381,8 +400,7 @@ export function generateDualRoast({
     `${name1} entered to "${p1Song}", while ${name2} arrived to "${p2Song}". The musical taste leap is as wild as your group chat discussions.`,
     `Radio chart clash! ${name1}'s era jam was "${p1Song}" vs ${name2}'s anthem "${p2Song}". One is a classic masterpiece, the other is pure chaos.`,
     `Imagine a playlist mixing "${p1Song}" (${p1Year}) and "${p2Song}" (${p2Year}) — that's the exact sound of ${name1} and ${name2} arguing in the car.`,
-    `"${p1Song}" welcomed ${name1}, while "${p2Song}" heralded ${name2}. You two couldn't even share an aux cable without triggering a debate.`,
-    `${name1} brought "${p1Song}" retro vibes, while ${name2} brought "${p2Song}" drama. Music producers are still recovering.`
+    `"${p1Song}" welcomed ${name1}, while "${p2Song}" heralded ${name2}. You two couldn't even share an aux cable without triggering a debate.`
   ];
   const songRoast = songOptions[(h + 3) % songOptions.length];
 
@@ -396,10 +414,7 @@ export function generateDualRoast({
       ? `Verdict: Both born in ${p1City}! Double the local pride, double the traffic jams whenever you both hang out.`
       : `Verdict: ${p1City} energy meets ${p2City} vibes — traffic jams and loud debates everywhere you both go.`,
     `Verdict: Two generations of questionable financial decisions, united by birth certificates.`,
-    `Verdict: ${name1} provides the unasked advice, ${name2} provides the eye-rolls. A match made in Indian family drama history.`,
-    `Verdict: ${diff === 0 ? 'Same-year soulmates' : `${diff}-year gap rivals`} — compatibility score: 99% chaos, 1% calm.`,
-    `Verdict: ${name1} is the strategist, ${name2} is the chaos catalyst. Do not leave them unsupervised in a shopping mall.`,
-    `Verdict: ${name1} (${p1City}) + ${name2} (${p2City}) = 100% uncontrollable laughter and zero productivity.`
+    `Verdict: ${name1} provides the unasked advice, ${name2} provides the eye-rolls. A match made in Indian family drama history.`
   ];
 
   return {
@@ -407,6 +422,12 @@ export function generateDualRoast({
     seniorityRoast: seniority,
     economicRoast: economicRoast,
     songRoast: songRoast,
+    diwaliRoast: diwaliRoast,
+    diwalis1: diwalis1,
+    diwalis2: diwalis2,
+    diwaliDiff: diwaliDiff,
+    olderName: older,
+    youngerName: younger,
     verdict: verdicts[(h + 5) % verdicts.length]
   };
 }

@@ -257,37 +257,77 @@ export const CompareBirthdays: React.FC = () => {
           : 'bg-[#201A14] border-[#E8A33D]/40 shadow-2xl'
       }`}>
         
+        {/* ICONIC INDIAN DIWALI SENIORITY FLEX BANNER ("TUJHSE ZYADA DIWALIYAN DEKHI HAIN MAINE") */}
+        <div className="bg-gradient-to-r from-[#2A1B0E] via-[#201A14] to-[#2A1B0E] p-4.5 sm:p-6 rounded-2xl border-2 border-[#E8A33D]/60 space-y-3 shadow-xl relative overflow-hidden">
+          <div className="flex items-center justify-between border-b border-[#E8A33D]/30 pb-2.5 flex-wrap gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-xl">🪔</span>
+              <span className="font-fraunces text-xs sm:text-sm uppercase font-bold tracking-wider text-[#E8A33D]">
+                The Diwali Seniority Flex • "Tujhse Zyada Diwaliyan Dekhi Hain"
+              </span>
+            </div>
+            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#120F0D] text-[#E8A33D] border border-[#E8A33D]/40 font-semibold">
+              Indian Heritage Scale
+            </span>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-1">
+            <div className="grid grid-cols-2 gap-3 w-full sm:w-auto font-mono text-center sm:text-left">
+              <div className="bg-[#120F0D]/90 p-3 rounded-xl border border-[#2D251E]">
+                <div className="text-[10px] text-[#A89B8C] font-semibold">{person1.name || 'Person 1'}</div>
+                <div className="text-base font-bold text-[#E8A33D]">🪔 {dualRoast.diwalis1} Diwalis</div>
+                <div className="text-[9px] text-[#A89B8C]">({year1} – 2026)</div>
+              </div>
+
+              <div className="bg-[#120F0D]/90 p-3 rounded-xl border border-[#2D251E]">
+                <div className="text-[10px] text-[#A89B8C] font-semibold">{person2.name || 'Person 2'}</div>
+                <div className="text-base font-bold text-[#E8A33D]">🪔 {dualRoast.diwalis2} Diwalis</div>
+                <div className="text-[9px] text-[#A89B8C]">({year2} – 2026)</div>
+              </div>
+            </div>
+
+            <div className="w-full sm:flex-1 bg-[#120F0D]/80 p-3.5 rounded-xl border border-[#E8A33D]/30 space-y-1">
+              <div className="text-[10px] font-mono uppercase font-bold text-[#E8A33D]">
+                ✦ Seniority Verdict ✦
+              </div>
+              <p className="font-fraunces text-xs sm:text-sm text-[#F5EBE0] leading-relaxed italic">
+                {dualRoast.diwaliRoast}
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* SAVAGE DUAL ROAST CARD (ROAST MODE ONLY) */}
         {toneMode === 'roast' && (
-          <div className="bg-[#120F0D] p-5 sm:p-6 rounded-xl border-2 border-[#D65F4C] space-y-4 shadow-lg animate-fade-in-up">
-            <div className="flex items-center justify-between border-b border-[#D65F4C]/40 pb-3">
+          <div className="bg-[#120F0D] p-5 sm:p-6 rounded-2xl border-2 border-[#D65F4C] space-y-4 shadow-lg animate-fade-in-up">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#D65F4C]/40 pb-3 gap-2">
               <h3 className="font-fraunces text-lg sm:text-xl font-extrabold text-[#D65F4C] flex items-center gap-2">
                 <Flame className="w-5 h-5 text-[#D65F4C]" />
                 <span>{dualRoast.headline}</span>
               </h3>
-              <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-[#D65F4C]/20 text-[#D65F4C] font-bold border border-[#D65F4C]/40">
+              <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-[#D65F4C]/20 text-[#D65F4C] font-bold border border-[#D65F4C]/40 self-start sm:self-auto">
                 DUAL ROAST DIPLOMA
               </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs text-[#F5EBE0]">
-              <div className="bg-[#1C1210] p-3 rounded-lg border border-[#D65F4C]/30 space-y-1">
+              <div className="bg-[#1C1210] p-3.5 rounded-xl border border-[#D65F4C]/30 space-y-1">
                 <div className="text-[9px] text-[#D65F4C] uppercase font-bold">📜 Age & Seniority Gap</div>
                 <p className="text-[#F5EBE0] text-[11px] leading-relaxed">{dualRoast.seniorityRoast}</p>
               </div>
 
-              <div className="bg-[#1C1210] p-3 rounded-lg border border-[#D65F4C]/30 space-y-1">
+              <div className="bg-[#1C1210] p-3.5 rounded-xl border border-[#D65F4C]/30 space-y-1">
                 <div className="text-[9px] text-[#D65F4C] uppercase font-bold">💸 Inflation Jump</div>
                 <p className="text-[#F5EBE0] text-[11px] leading-relaxed">{dualRoast.economicRoast}</p>
               </div>
 
-              <div className="bg-[#1C1210] p-3 rounded-lg border border-[#D65F4C]/30 space-y-1">
+              <div className="bg-[#1C1210] p-3.5 rounded-xl border border-[#D65F4C]/30 space-y-1">
                 <div className="text-[9px] text-[#D65F4C] uppercase font-bold">🎶 Song Clash</div>
                 <p className="text-[#F5EBE0] text-[11px] leading-relaxed">{dualRoast.songRoast}</p>
               </div>
             </div>
 
-            <div className="bg-[#D65F4C]/20 p-3 rounded-xl border border-[#D65F4C] text-[#D65F4C] font-bold text-xs sm:text-sm text-center">
+            <div className="bg-[#D65F4C]/20 p-3.5 rounded-xl border border-[#D65F4C] text-[#D65F4C] font-bold text-xs sm:text-sm text-center">
               {dualRoast.verdict}
             </div>
           </div>
