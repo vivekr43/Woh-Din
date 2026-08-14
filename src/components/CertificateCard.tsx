@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Share2, Download, ArrowLeft, Thermometer, 
-  Newspaper, ShoppingBag, RefreshCw, Flame, Sparkles, Smartphone, Clock,
+  Newspaper, ShoppingBag, RefreshCw, Flame, Sparkles, Clock,
   Sunrise, Moon, Quote, X, Film, Gamepad2
 } from 'lucide-react';
 import { toPng } from 'html-to-image';
@@ -52,7 +52,6 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
   onReset,
   onSelectPreset
 }) => {
-  const certificateRef = useRef<HTMLDivElement>(null);
   const storyRef = useRef<HTMLDivElement>(null);
 
   // Tone state: Nostalgic (default) vs Roast Me
@@ -69,7 +68,6 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
 
   // Staggered reveal step animation (0 = 0%, 1 = 20%, 2 = 40%, 3 = 60%, 4 = 80%, 5 = 100%)
   const [revealStep, setRevealStep] = useState<number>(0);
-  const [isExporting, setIsExporting] = useState<boolean>(false);
   const [isExportingStory, setIsExportingStory] = useState<boolean>(false);
   const [copySuccess, setCopySuccess] = useState<boolean>(false);
 
@@ -183,28 +181,6 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
       title,
       filename
     });
-  };
-
-  // High-Res Standard Image Download (PNG format)
-  const handleDownloadImage = async () => {
-    if (!certificateRef.current) return;
-    try {
-      setIsExporting(true);
-      const dataUrl = await toPng(certificateRef.current, {
-        cacheBust: true,
-        pixelRatio: 2,
-        backgroundColor: '#1C1611',
-        type: 'image/png'
-      });
-
-      const filename = `WohDin-Certificate-${name.replace(/\s+/g, '_') || 'Arrival'}-${birthYear}.png`;
-      await executeDownloadOrShare(dataUrl, filename, `${name}'s Certificate of Arrival`);
-    } catch (err) {
-      console.error('Failed to generate standard image:', err);
-      alert('Could not generate PNG image on this browser. Please take a screenshot!');
-    } finally {
-      setIsExporting(false);
-    }
   };
 
   // 9:16 Instagram Story PNG Download
@@ -330,19 +306,10 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
             <MagneticButton
               onClick={handleDownloadStory}
               disabled={isExportingStory}
-              className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#D65F4C] to-[#E8A33D] text-white font-semibold text-xs sm:text-sm transition-all shadow-md hover:brightness-110 cursor-pointer disabled:opacity-50"
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#E8A33D] via-[#F5B85D] to-[#E8A33D] text-[#120F0D] font-extrabold text-xs sm:text-sm transition-all shadow-lg shadow-[#E8A33D]/25 hover:brightness-110 cursor-pointer disabled:opacity-50"
             >
-              {isExportingStory ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Smartphone className="w-4 h-4" />}
-              <span>{isExportingStory ? 'Exporting...' : 'Story (9:16)'}</span>
-            </MagneticButton>
-
-            <MagneticButton
-              onClick={handleDownloadImage}
-              disabled={isExporting}
-              className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2.5 rounded-xl bg-[#E8A33D] hover:bg-[#F5B85D] text-[#120F0D] font-bold text-xs sm:text-sm transition-all shadow-lg shadow-[#E8A33D]/20 cursor-pointer disabled:opacity-50"
-            >
-              {isExporting ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-              <span>{isExporting ? 'Exporting...' : 'Download Card'}</span>
+              {isExportingStory ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
+              <span>{isExportingStory ? 'Generating Story...' : 'Download Story Card'}</span>
             </MagneticButton>
           </div>
         </div>
@@ -363,7 +330,7 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
           style={{ backgroundImage: 'url("/indian_art_bg.jpg")' }}
         />
 
-        <div ref={certificateRef} className="space-y-8 sm:space-y-10 relative z-10">
+        <div className="space-y-8 sm:space-y-10 relative z-10">
           
           {/* SIGNATURE ELEMENT: FUNCTIONAL DIYA FLAME AT TOP */}
           <div className="flex justify-center border-b border-[#2D251E]/80 pb-6">
