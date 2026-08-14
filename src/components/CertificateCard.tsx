@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   Share2, Download, ArrowLeft, Thermometer, 
   Newspaper, ShoppingBag, RefreshCw, Flame, Sparkles, Smartphone, Clock,
-  Sunrise, Moon, Quote
+  Sunrise, Moon, Quote, X
 } from 'lucide-react';
 import { toPng } from 'html-to-image';
 import confetti from 'canvas-confetti';
@@ -134,6 +134,55 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
     };
   }, [dob, city, lat, lng, birthYear]);
 
+  // State for Mobile Download Fallback Preview Modal
+  const [previewModal, setPreviewModal] = useState<{
+    isOpen: boolean;
+    url: string;
+    title: string;
+    filename: string;
+  } | null>(null);
+
+  // Helper for universal mobile & desktop download/share
+  const executeDownloadOrShare = async (dataUrl: string, filename: string, title: string) => {
+    try {
+      const res = await fetch(dataUrl);
+      const blob = await res.blob();
+      const file = new File([blob], filename, { type: 'image/png' });
+
+      // Attempt 1: Native Mobile File Share (iOS 15+, Android Chrome)
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          title,
+          text: `📜 ${title} from Woh Din!`,
+          files: [file]
+        });
+        return;
+      }
+    } catch (err) {
+      console.log('Native file share skipped, attempting direct download link:', err);
+    }
+
+    // Attempt 2: Programmatic Anchor Link Click
+    try {
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = dataUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      console.warn('Direct link download failed, opening preview modal:', err);
+    }
+
+    // Always set preview modal as fallback so mobile users can tap & hold to save
+    setPreviewModal({
+      isOpen: true,
+      url: dataUrl,
+      title,
+      filename
+    });
+  };
+
   // High-Res Standard Image Download (PNG format)
   const handleDownloadImage = async () => {
     if (!certificateRef.current) return;
@@ -142,17 +191,15 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
       const dataUrl = await toPng(certificateRef.current, {
         cacheBust: true,
         pixelRatio: 2,
+        backgroundColor: '#1C1611',
         type: 'image/png'
       });
 
-      const link = document.createElement('a');
-      link.download = `WohDin-Certificate-${name.replace(/\s+/g, '_')}-${birthYear}.png`;
-      link.href = dataUrl;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      const filename = `WohDin-Certificate-${name.replace(/\s+/g, '_') || 'Arrival'}-${birthYear}.png`;
+      await executeDownloadOrShare(dataUrl, filename, `${name}'s Certificate of Arrival`);
     } catch (err) {
       console.error('Failed to generate standard image:', err);
+      alert('Could not generate PNG image on this browser. Please take a screenshot!');
     } finally {
       setIsExporting(false);
     }
@@ -168,17 +215,15 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
         pixelRatio: 2,
         width: 1080,
         height: 1920,
+        backgroundColor: '#120F0D',
         type: 'image/png'
       });
 
-      const link = document.createElement('a');
-      link.download = `WohDin-Story-${name.replace(/\s+/g, '_')}-${birthYear}.png`;
-      link.href = dataUrl;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      const filename = `WohDin-Story-${name.replace(/\s+/g, '_') || 'Arrival'}-${birthYear}.png`;
+      await executeDownloadOrShare(dataUrl, filename, `${name}'s 9:16 Instagram Story`);
     } catch (err) {
       console.error('Failed to generate story image:', err);
+      alert('Could not generate Story image on this browser. Please take a screenshot!');
     } finally {
       setIsExportingStory(false);
     }
@@ -681,7 +726,7 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
       </div>
 
       {/* HIDDEN CONTAINER FOR 9:16 INSTAGRAM STORY EXPORT */}
-      <div className="no-print overflow-hidden h-0 opacity-0 pointer-events-none">
+      <div className="no-print fixed left-[-9999px] top-[-9999px] pointer-events-none z-[-100]">
         <div 
           ref={storyRef}
           className="w-[1080px] h-[1920px] bg-[#120F0D] text-[#F5EBE0] p-16 flex flex-col justify-between space-y-12 font-sans relative"
@@ -803,6 +848,56 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
           ))}
         </div>
       </div>
+
+      {/* UNIVERSAL MOBILE & DESKTOP IMAGE PREVIEW MODAL */}
+      {previewModal && (
+        <div className="no-print fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in-up">
+          <div className="bg-[#1C1611] p-5 sm:p-6 rounded-3xl border-2 border-[#E8A33D] max-w-lg w-full space-y-4 shadow-2xl relative text-center">
+            
+            <div className="flex items-center justify-between border-b border-[#2D251E] pb-3">
+              <h3 className="font-fraunces text-sm sm:text-base font-bold text-[#E8A33D] flex items-center gap-2">
+                <span>✨ Image Ready!</span>
+              </h3>
+              <button
+                onClick={() => setPreviewModal(null)}
+                className="text-[#A89B8C] hover:text-white p-1 rounded-lg hover:bg-[#201A14] transition-all cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <p className="text-xs text-[#A89B8C]">
+              📱 <strong className="text-[#F5EBE0]">Mobile / Webview Users:</strong> Tap & hold the image below to save to Photos, or click Save PNG!
+            </p>
+
+            <div className="max-h-[55vh] overflow-y-auto rounded-2xl border border-[#2D251E] bg-[#120F0D] p-2 flex justify-center shadow-inner">
+              <img
+                src={previewModal.url}
+                alt={previewModal.title}
+                className="max-h-[50vh] w-auto object-contain rounded-xl shadow-lg border border-[#E8A33D]/30"
+              />
+            </div>
+
+            <div className="flex items-center gap-3 pt-2">
+              <a
+                href={previewModal.url}
+                download={previewModal.filename}
+                className="flex-1 py-3 px-4 rounded-xl bg-[#E8A33D] hover:bg-[#F5B85D] text-[#120F0D] font-bold text-xs sm:text-sm transition-all text-center flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+              >
+                <Download className="w-4 h-4" />
+                <span>Save PNG Image</span>
+              </a>
+              <button
+                onClick={() => setPreviewModal(null)}
+                className="px-4 py-3 rounded-xl bg-[#201A14] hover:bg-[#2D251E] border border-[#2D251E] text-xs text-[#A89B8C] font-semibold cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
 
     </div>
   );
