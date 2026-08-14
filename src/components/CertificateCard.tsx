@@ -802,73 +802,73 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
           <div className="absolute inset-0 bg-gradient-to-b from-[#1C1611]/90 via-[#120F0D]/95 to-[#1C1611]/95 pointer-events-none" />
 
           {/* 1. BRANDING HEADER */}
-          <div className="text-center space-y-2 pt-6 relative z-10">
+          <div className="text-center space-y-2 pt-4 relative z-10">
             <div className="text-5xl">🪔</div>
-            <h1 className="font-fraunces text-6xl font-extrabold marigold-gradient-text tracking-widest uppercase">
+            <h1 className="font-fraunces text-5xl font-extrabold marigold-gradient-text tracking-widest uppercase">
               Woh Din
             </h1>
-            <div className="inline-flex items-center gap-3 px-6 py-1.5 rounded-full bg-[#201A14] border border-[#E8A33D]/50 text-xl font-mono text-[#E8A33D] font-bold">
-              <span>CERTIFICATE OF ARRIVAL</span>
+            <div className="inline-block px-6 py-1.5 rounded-full bg-[#201A14] border border-[#E8A33D]/50 text-lg font-mono text-[#E8A33D] font-bold">
+              CERTIFICATE OF ARRIVAL
             </div>
           </div>
 
           {/* 2. HERO PERSONALIZED CARD */}
-          <div className="bg-[#201A14]/90 p-10 rounded-3xl border-2 border-[#E8A33D] text-center space-y-5 relative z-10 shadow-2xl backdrop-blur-md">
-            <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-[#D65F4C]/20 border border-[#D65F4C]/50 text-xl font-mono font-bold text-[#D65F4C]">
-              <span>🔥 {roastData.badgeTag}</span>
+          <div className="bg-[#201A14]/90 p-8 rounded-3xl border-2 border-[#E8A33D] text-center space-y-4 relative z-10 shadow-2xl backdrop-blur-md">
+            <div className="inline-block px-5 py-2 rounded-full bg-[#D65F4C]/20 border border-[#D65F4C]/50 text-base font-mono font-bold text-[#D65F4C] leading-snug max-w-[90%] mx-auto">
+              🔥 {roastData.badgeTag}
             </div>
 
-            <h2 className="font-fraunces text-6xl font-extrabold text-[#F5EBE0]">
+            <h2 className="font-fraunces text-5xl font-extrabold text-[#F5EBE0] leading-tight pt-1">
               {name}
             </h2>
 
-            <div className="text-3xl text-[#E8A33D] font-mono font-bold">
-              {city} • {dayOfWeekStr}, {formattedDateLong}
+            <div className="text-2xl text-[#E8A33D] font-mono font-bold">
+              {city} • {formattedDateLong}
             </div>
 
-            <div className="text-2xl font-mono text-[#38BDF8] font-semibold">
+            <div className="text-xl font-mono text-[#38BDF8] font-semibold">
               ⏳ You've been on Earth for {daysInfo.days.toLocaleString('en-IN')} Days!
             </div>
 
-            <p className="text-2xl italic text-[#A89B8C]">"{getQuoteForDate(dob).quote}"</p>
+            <p className="text-xl italic text-[#A89B8C] pt-1">"{getQuoteForDate(dob).quote}"</p>
           </div>
 
           {/* 3. MOON OVERHEAD & BUZZFEED MOON PERSONALITY CARD */}
           {moon && (() => {
             const storyMoonTrait = getMoonPersonality(moon.illumination, moon.phaseName);
             return (
-              <div className="bg-[#201A14]/90 p-8 rounded-3xl border-2 border-[#E8A33D]/60 space-y-4 relative z-10 shadow-xl">
-                <div className="flex items-center justify-between border-b border-[#2D251E] pb-3 text-xl">
-                  <span className="text-[#E8A33D] font-bold uppercase tracking-widest font-mono flex items-center gap-2">
+              <div className="bg-[#201A14]/90 p-7 rounded-3xl border-2 border-[#E8A33D]/60 space-y-3 relative z-10 shadow-xl">
+                <div className="flex items-center justify-between border-b border-[#2D251E] pb-2 text-lg font-mono">
+                  <div className="text-[#E8A33D] font-bold uppercase tracking-wider flex items-center gap-2">
                     <span>🌙 Moon Overhead:</span>
                     <span>{moon.phaseName} ({moon.illumination}% Lit)</span>
-                  </span>
-                  <span className="text-[#A89B8C] font-mono text-lg">
+                  </div>
+                  <div className="text-[#A89B8C]">
                     {moon.tithiName}
-                  </span>
+                  </div>
                 </div>
 
-                <div className="bg-[#120F0D] p-6 rounded-2xl border border-[#38BDF8]/40 space-y-3">
-                  <div className="flex items-center justify-between text-lg font-mono">
+                <div className="bg-[#120F0D] p-5 rounded-2xl border border-[#38BDF8]/40 space-y-2.5">
+                  <div className="flex items-center justify-between text-base font-mono">
                     <span className="text-[#38BDF8] font-bold flex items-center gap-2">
                       <span>{storyMoonTrait.badgeEmoji}</span>
                       <span>What Your Moon Phase Says About You</span>
                     </span>
-                    <span className="px-3 py-1 rounded-full bg-[#201A14] text-[#38BDF8] text-base border border-[#38BDF8]/30">
+                    <span className="px-3 py-1 rounded-full bg-[#201A14] text-[#38BDF8] text-sm border border-[#38BDF8]/30 font-semibold">
                       BuzzFeed Readout
                     </span>
                   </div>
 
-                  <div className="font-fraunces text-3xl font-extrabold text-[#F5EBE0]">
+                  <div className="font-fraunces text-2xl font-extrabold text-[#F5EBE0] leading-snug">
                     {storyMoonTrait.title}
                   </div>
 
-                  <p className="text-xl italic text-[#A89B8C] leading-relaxed">
+                  <p className="text-lg italic text-[#A89B8C] leading-relaxed">
                     "{storyMoonTrait.buzzfeedReadout}"
                   </p>
 
-                  <div className="pt-1 text-lg font-mono text-[#E8A33D]">
-                    <span className="px-4 py-1.5 rounded-lg bg-[#201A14] border border-[#E8A33D]/40 font-bold">
+                  <div className="pt-1 text-base font-mono text-[#E8A33D]">
+                    <span className="px-3 py-1 rounded-lg bg-[#201A14] border border-[#E8A33D]/40 font-bold">
                       ✨ Vibe: {storyMoonTrait.shareablePill}
                     </span>
                   </div>
@@ -878,67 +878,67 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
           })()}
 
           {/* 4. CULTURAL ERA SNAPSHOT GRID (2x2) */}
-          <div className="grid grid-cols-2 gap-6 relative z-10">
+          <div className="grid grid-cols-2 gap-5 relative z-10">
             {/* ANTHEM */}
-            <div className="bg-[#201A14]/90 p-6 rounded-2xl border border-[#2D251E] space-y-2">
-              <div className="text-lg text-[#A89B8C] font-mono uppercase font-bold flex items-center justify-between">
+            <div className="bg-[#201A14]/90 p-5 rounded-2xl border border-[#2D251E] space-y-2">
+              <div className="flex items-center justify-between border-b border-[#2D251E] pb-2 text-base text-[#A89B8C] font-mono uppercase font-bold">
                 <span>🎵 #1 Anthem</span>
-                <span className="text-[#E8A33D]">Hit Song</span>
+                <span className="text-[#E8A33D] text-xs">Chartbuster</span>
               </div>
-              <div className="font-bold text-[#E8A33D] text-2xl truncate">"{song?.song.songTitle}"</div>
-              <div className="text-lg text-[#A89B8C] truncate">{song?.song.movie} • {song?.song.singers}</div>
+              <div className="font-bold text-[#E8A33D] text-xl truncate leading-snug">"{song?.song.songTitle}"</div>
+              <div className="text-base text-[#A89B8C] truncate">{song?.song.movie} • {song?.song.singers}</div>
             </div>
 
             {/* FILM */}
-            <div className="bg-[#201A14]/90 p-6 rounded-2xl border border-[#2D251E] space-y-2">
-              <div className="text-lg text-[#A89B8C] font-mono uppercase font-bold flex items-center justify-between">
+            <div className="bg-[#201A14]/90 p-5 rounded-2xl border border-[#2D251E] space-y-2">
+              <div className="flex items-center justify-between border-b border-[#2D251E] pb-2 text-base text-[#A89B8C] font-mono uppercase font-bold">
                 <span>🎬 Top Film</span>
-                <span className="text-[#E8A33D]">{movie.boxOfficeStatus.split(' ')[0]}</span>
+                <span className="text-[#E8A33D] text-xs">{movie.boxOfficeStatus.split(' ')[0]}</span>
               </div>
-              <div className="font-bold text-[#F5EBE0] text-2xl truncate">{movie.title}</div>
-              <div className="text-lg italic text-[#E8A33D] truncate">"{movie.iconicDialogue}"</div>
+              <div className="font-bold text-[#F5EBE0] text-xl truncate leading-snug">{movie.title}</div>
+              <div className="text-base italic text-[#E8A33D] truncate">"{movie.iconicDialogue}"</div>
             </div>
 
             {/* GAME CRAZE */}
-            <div className="bg-[#201A14]/90 p-6 rounded-2xl border border-[#2D251E] space-y-2">
-              <div className="text-lg text-[#A89B8C] font-mono uppercase font-bold flex items-center justify-between">
+            <div className="bg-[#201A14]/90 p-5 rounded-2xl border border-[#2D251E] space-y-2">
+              <div className="flex items-center justify-between border-b border-[#2D251E] pb-2 text-base text-[#A89B8C] font-mono uppercase font-bold">
                 <span>🎮 Era Craze</span>
-                <span className="text-[#38BDF8]">{game.memoryTag}</span>
+                <span className="text-[#38BDF8] text-xs">{game.memoryTag}</span>
               </div>
-              <div className="font-bold text-[#38BDF8] text-2xl truncate">{game.title}</div>
-              <div className="text-lg text-[#A89B8C] truncate">{game.category}</div>
+              <div className="font-bold text-[#38BDF8] text-xl truncate leading-snug">{game.title}</div>
+              <div className="text-base text-[#A89B8C] truncate">{game.category}</div>
             </div>
 
             {/* ESSENTIAL PRICES */}
-            <div className="bg-[#201A14]/90 p-6 rounded-2xl border border-[#2D251E] space-y-2">
-              <div className="text-lg text-[#A89B8C] font-mono uppercase font-bold flex items-center justify-between">
+            <div className="bg-[#201A14]/90 p-5 rounded-2xl border border-[#2D251E] space-y-2">
+              <div className="flex items-center justify-between border-b border-[#2D251E] pb-2 text-base text-[#A89B8C] font-mono uppercase font-bold">
                 <span>⛽ Era Prices</span>
-                <span className="text-[#E8A33D]">{birthYear}</span>
+                <span className="text-[#E8A33D] text-xs">{birthYear}</span>
               </div>
-              <div className="font-mono font-bold text-[#E8A33D] text-2xl">
+              <div className="font-mono font-bold text-[#E8A33D] text-xl leading-snug">
                 Petrol: ₹{prices?.petrol1L || 0}/L • Milk: ₹{prices?.milk1L || 0}/L
               </div>
-              <div className="text-lg text-[#A89B8C] font-mono">10g Gold: ₹{prices?.gold10g || 0}</div>
+              <div className="text-base text-[#A89B8C] font-mono">10g Gold: ₹{prices?.gold10g || 0}</div>
             </div>
           </div>
 
           {/* 5. SAVAGE ROAST QUOTE */}
-          <div className="bg-[#1C1210] p-6 rounded-2xl border-2 border-[#D65F4C]/60 text-center space-y-1 relative z-10">
-            <div className="text-sm font-mono uppercase font-bold text-[#D65F4C]">🔥 Official Arrival Reality</div>
-            <p className="font-fraunces text-2xl font-bold text-[#F5EBE0]">
+          <div className="bg-[#1C1210] p-5 rounded-2xl border-2 border-[#D65F4C]/60 text-center space-y-1 relative z-10">
+            <div className="text-xs font-mono uppercase font-bold text-[#D65F4C]">🔥 Official Arrival Reality</div>
+            <p className="font-fraunces text-xl font-bold text-[#F5EBE0] leading-snug">
               "{roastData.headerSub}"
             </p>
           </div>
 
-          {/* 6. VIRAL CALL-TO-ACTION FOOTER WITH WEBSITE LINK & QR CODE PROMPT */}
-          <div className="bg-gradient-to-r from-[#201A14] via-[#2A1B0E] to-[#201A14] p-6 rounded-2xl border-2 border-[#E8A33D] text-center space-y-2 relative z-10 shadow-2xl">
-            <div className="text-xl font-mono text-[#A89B8C]">
+          {/* 6. VIRAL CALL-TO-ACTION FOOTER WITH WEBSITE LINK */}
+          <div className="bg-gradient-to-r from-[#201A14] via-[#2A1B0E] to-[#201A14] p-5 rounded-2xl border-2 border-[#E8A33D] text-center space-y-1.5 relative z-10 shadow-2xl">
+            <div className="text-base font-mono text-[#A89B8C]">
               What did India look like the day YOU arrived?
             </div>
-            <div className="font-fraunces text-3xl font-extrabold text-[#E8A33D] tracking-wider">
+            <div className="font-fraunces text-2xl font-extrabold text-[#E8A33D] tracking-wider">
               wohdin-app.vercel.app
             </div>
-            <div className="text-lg font-mono text-[#F5EBE0] font-semibold">
+            <div className="text-base font-mono text-[#F5EBE0] font-semibold">
               🪔 Create Your Own Certificate of Arrival & Story Card 🚀
             </div>
           </div>
