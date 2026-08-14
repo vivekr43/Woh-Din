@@ -3,8 +3,6 @@
 > **What Did India Look Like The Day You Were Born?**  
 > *Craft your ceremonial "Certificate of Arrival" — moon overhead, weather in your birth city, top Hindi song, headlines, and everyday prices.*
 
-![Woh Din Live Banner](https://wohdin-app.vercel.app/wohdin_logo.png)
-
 🌐 **Live Website**: [https://wohdin-app.vercel.app](https://wohdin-app.vercel.app)  
 🚀 **Hosted on**: Vercel (100% Free Production Deployment)
 
@@ -98,10 +96,10 @@ Born/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/woh-din.git
+git clone https://github.com/vivekr43/Woh-Din.git
 
 # Navigate into the project folder
-cd woh-din
+cd Woh-Din
 
 # Install dependencies
 npm install
@@ -127,9 +125,3 @@ Deployed seamlessly on Vercel with zero configuration required:
 ```bash
 npx vercel --prod
 ```
-
----
-
-## 📜 License
-
-Created with 🪔 by **Vivek Ribadiya**. All rights reserved.
