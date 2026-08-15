@@ -82,12 +82,47 @@ const CITY_ROASTS: Record<string, string[]> = {
     "Arrived in Pune and immediately judged everyone else's Marathi accent.",
     "Born in FC Road, Pune — spending 80% of your time hanging out at bakeries."
   ],
+  gujarat: [
+    "Born in Gujarat — 44°C summer heat, dry state rules, and 100% Dhokla-Fafda power since birth.",
+    "Arrived in Gujarat ready to bargain on everything, including your own hospital delivery bill.",
+    "Born in Gujarat — already calculating 15% annual ROI on your pocket money at age 5.",
+    "Gujarat welcomed you during Navratri season — you started doing Garba steps before learning to walk.",
+    "Born in Gujarat — strictly demanding sweet chutney with every single snack."
+  ],
   ahmedabad: [
     "Born in Ahmedabad — 44°C summer heat, zero booze, maximum dhokla power.",
     "Arrived in Gujarat ready to bargain on everything, including your own birth hospital bill.",
     "Born in Ahmedabad — already negotiating discounts on baby formula.",
     "Arrived in Gujarat during Garba season and immediately out-danced the entire ward.",
     "Born in Ahmedabad — refusing to buy any item unless 20% discount is applied."
+  ],
+  surat: [
+    "Born in Surat — diamond merchant hustle and 4 AM Locho cravings since birth.",
+    "Arrived in Surat ready to start 3 textile businesses before age 10.",
+    "Surat welcomed you with street food stalls open until 4 AM.",
+    "Born in Surat — spending 80% of your salary on street food at Dumas Beach."
+  ],
+  vadodara: [
+    "Born in Vadodara (Baroda) — Cultural Capital of Gujarat with 9 nights of non-stop United Way Garba.",
+    "Arrived in Vadodara demanding Sev Usal before taking your first steps.",
+    "Born in Vadodara — high cultural pride and zero patience for bad tea."
+  ],
+  rajkot: [
+    "Born in Rajkot — taking a mandatory 1 to 4 PM afternoon nap long before Pune made it famous.",
+    "Arrived in Rajkot — Kathiyawadi swag and 100% Chutney-Gathiya power.",
+    "Born in Rajkot — where afternoon naps are sacred and non-negotiable."
+  ],
+  gandhinagar: [
+    "Born in Gandhinagar — clean green sectors, capital city pride, and zero traffic jams.",
+    "Arrived in Gandhinagar — quiet, organized, and calculating business moves in secret."
+  ],
+  bhavnagar: [
+    "Born in Bhavnagar — world-famous Gathiya cravings and Sea breeze since birth.",
+    "Arrived in Bhavnagar demanding hot Gathiya & fried green chillies at sunrise."
+  ],
+  jamnagar: [
+    "Born in Jamnagar — Brass City hustle and Lakhota Lake evening walks.",
+    "Arrived in Jamnagar with Royal Saurashtra confidence."
   ],
   kolkata: [
     "Born in Kolkata — where even the tram drivers took a slow break when you arrived.",
@@ -112,11 +147,6 @@ const CITY_ROASTS: Record<string, string[]> = {
     "Born in Jaipur — Royal Pink City heritage, but 100% street-food chaos.",
     "Arrived in Jaipur during peak summer heat and refused to wear a hat.",
     "Born in Jaipur — demanding pyaaz kachori before learning your first sentence."
-  ],
-  surat: [
-    "Born in Surat — diamond merchant hustle and locho cravings since birth.",
-    "Arrived in Surat ready to start 3 textile businesses before age 10.",
-    "Surat welcomed you with street food stalls open until 4 AM."
   ],
   lucknow: [
     "Born in Lucknow — 100% Tehzeeb & Tunday Kabab pride since day one.",

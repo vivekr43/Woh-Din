@@ -4,20 +4,44 @@ export interface IndianCity {
   lat: number;
   lng: number;
   region: 'North' | 'South' | 'East' | 'West' | 'Central' | 'Northeast' | 'Himalayan';
-  avgJanTemp: number; // For climate fallback
+  avgJanTemp: number;
   avgJulTemp: number;
 }
 
 export const INDIAN_CITIES: IndianCity[] = [
+  // GUJARAT (STATE & CITIES)
+  { name: 'Gujarat', state: 'Gujarat', lat: 23.0225, lng: 72.5714, region: 'West', avgJanTemp: 20, avgJulTemp: 30 },
+  { name: 'Ahmedabad', state: 'Gujarat', lat: 23.0225, lng: 72.5714, region: 'West', avgJanTemp: 20, avgJulTemp: 30 },
+  { name: 'Surat', state: 'Gujarat', lat: 21.1702, lng: 72.8311, region: 'West', avgJanTemp: 22, avgJulTemp: 29 },
+  { name: 'Vadodara (Baroda)', state: 'Gujarat', lat: 22.3072, lng: 73.1812, region: 'West', avgJanTemp: 21, avgJulTemp: 29 },
+  { name: 'Rajkot', state: 'Gujarat', lat: 22.3039, lng: 70.8022, region: 'West', avgJanTemp: 20, avgJulTemp: 29 },
+  { name: 'Gandhinagar', state: 'Gujarat', lat: 23.2156, lng: 72.6369, region: 'West', avgJanTemp: 20, avgJulTemp: 30 },
+  { name: 'Bhavnagar', state: 'Gujarat', lat: 21.7645, lng: 72.1519, region: 'West', avgJanTemp: 21, avgJulTemp: 29 },
+  { name: 'Jamnagar', state: 'Gujarat', lat: 22.4707, lng: 70.0577, region: 'West', avgJanTemp: 19, avgJulTemp: 28 },
+  { name: 'Junagadh', state: 'Gujarat', lat: 21.5222, lng: 70.4579, region: 'West', avgJanTemp: 20, avgJulTemp: 28 },
+  { name: 'Anand', state: 'Gujarat', lat: 22.5645, lng: 72.9289, region: 'West', avgJanTemp: 20, avgJulTemp: 29 },
+  { name: 'Navsari', state: 'Gujarat', lat: 20.9467, lng: 72.9520, region: 'West', avgJanTemp: 22, avgJulTemp: 28 },
+  { name: 'Bharuch', state: 'Gujarat', lat: 21.7051, lng: 72.9959, region: 'West', avgJanTemp: 21, avgJulTemp: 29 },
+  { name: 'Bhuj (Kutch)', state: 'Gujarat', lat: 23.2420, lng: 69.6669, region: 'West', avgJanTemp: 18, avgJulTemp: 31 },
+  { name: 'Mehsana', state: 'Gujarat', lat: 23.5880, lng: 72.3693, region: 'West', avgJanTemp: 19, avgJulTemp: 31 },
+  { name: 'Vapi', state: 'Gujarat', lat: 20.3893, lng: 72.9106, region: 'West', avgJanTemp: 22, avgJulTemp: 28 },
+  { name: 'Valsad', state: 'Gujarat', lat: 20.5992, lng: 72.9342, region: 'West', avgJanTemp: 22, avgJulTemp: 28 },
+  { name: 'Porbandar', state: 'Gujarat', lat: 21.6417, lng: 69.6293, region: 'West', avgJanTemp: 21, avgJulTemp: 28 },
+  { name: 'Patan', state: 'Gujarat', lat: 23.8493, lng: 72.1266, region: 'West', avgJanTemp: 19, avgJulTemp: 31 },
+  { name: 'Surendranagar', state: 'Gujarat', lat: 22.7234, lng: 71.6360, region: 'West', avgJanTemp: 20, avgJulTemp: 30 },
+  { name: 'Morbi', state: 'Gujarat', lat: 22.8173, lng: 70.8368, region: 'West', avgJanTemp: 20, avgJulTemp: 29 },
+  { name: 'Veraval (Somnath)', state: 'Gujarat', lat: 20.9042, lng: 70.3664, region: 'West', avgJanTemp: 22, avgJulTemp: 28 },
+  { name: 'Godhra', state: 'Gujarat', lat: 22.7780, lng: 73.6144, region: 'West', avgJanTemp: 20, avgJulTemp: 30 },
+  { name: 'Amreli', state: 'Gujarat', lat: 21.6032, lng: 71.2221, region: 'West', avgJanTemp: 20, avgJulTemp: 29 },
+
+  // METROS & MAJOR INDIAN CITIES
   { name: 'Mumbai', state: 'Maharashtra', lat: 19.0760, lng: 72.8777, region: 'West', avgJanTemp: 24, avgJulTemp: 27 },
   { name: 'Delhi', state: 'Delhi NCR', lat: 28.6139, lng: 77.2090, region: 'North', avgJanTemp: 14, avgJulTemp: 31 },
   { name: 'Bengaluru', state: 'Karnataka', lat: 12.9716, lng: 77.5946, region: 'South', avgJanTemp: 21, avgJulTemp: 24 },
   { name: 'Kolkata', state: 'West Bengal', lat: 22.5726, lng: 88.3639, region: 'East', avgJanTemp: 20, avgJulTemp: 29 },
   { name: 'Chennai', state: 'Tamil Nadu', lat: 13.0827, lng: 80.2707, region: 'South', avgJanTemp: 25, avgJulTemp: 31 },
   { name: 'Hyderabad', state: 'Telangana', lat: 17.3850, lng: 78.4867, region: 'South', avgJanTemp: 22, avgJulTemp: 27 },
-  { name: 'Ahmedabad', state: 'Gujarat', lat: 23.0225, lng: 72.5714, region: 'West', avgJanTemp: 20, avgJulTemp: 30 },
   { name: 'Pune', state: 'Maharashtra', lat: 18.5204, lng: 73.8567, region: 'West', avgJanTemp: 20, avgJulTemp: 25 },
-  { name: 'Surat', state: 'Gujarat', lat: 21.1702, lng: 72.8311, region: 'West', avgJanTemp: 22, avgJulTemp: 29 },
   { name: 'Jaipur', state: 'Rajasthan', lat: 26.9124, lng: 75.7873, region: 'North', avgJanTemp: 15, avgJulTemp: 30 },
   { name: 'Lucknow', state: 'Uttar Pradesh', lat: 26.8467, lng: 80.9462, region: 'North', avgJanTemp: 15, avgJulTemp: 30 },
   { name: 'Kanpur', state: 'Uttar Pradesh', lat: 26.4499, lng: 80.3319, region: 'North', avgJanTemp: 15, avgJulTemp: 30 },
@@ -27,14 +51,12 @@ export const INDIAN_CITIES: IndianCity[] = [
   { name: 'Bhopal', state: 'Madhya Pradesh', lat: 23.2599, lng: 77.4126, region: 'Central', avgJanTemp: 18, avgJulTemp: 27 },
   { name: 'Visakhapatnam', state: 'Andhra Pradesh', lat: 17.6868, lng: 83.2185, region: 'South', avgJanTemp: 23, avgJulTemp: 29 },
   { name: 'Patna', state: 'Bihar', lat: 25.5941, lng: 85.1376, region: 'East', avgJanTemp: 16, avgJulTemp: 29 },
-  { name: 'Vadodara', state: 'Gujarat', lat: 22.3072, lng: 73.1812, region: 'West', avgJanTemp: 21, avgJulTemp: 29 },
   { name: 'Ghaziabad', state: 'Uttar Pradesh', lat: 28.6692, lng: 77.4538, region: 'North', avgJanTemp: 14, avgJulTemp: 31 },
   { name: 'Ludhiana', state: 'Punjab', lat: 30.9010, lng: 75.8573, region: 'North', avgJanTemp: 12, avgJulTemp: 31 },
   { name: 'Agra', state: 'Uttar Pradesh', lat: 27.1767, lng: 78.0081, region: 'North', avgJanTemp: 15, avgJulTemp: 31 },
   { name: 'Nashik', state: 'Maharashtra', lat: 20.0059, lng: 73.7898, region: 'West', avgJanTemp: 19, avgJulTemp: 25 },
   { name: 'Faridabad', state: 'Haryana', lat: 28.4089, lng: 77.3178, region: 'North', avgJanTemp: 14, avgJulTemp: 31 },
   { name: 'Meerut', state: 'Uttar Pradesh', lat: 28.9845, lng: 77.7064, region: 'North', avgJanTemp: 14, avgJulTemp: 31 },
-  { name: 'Rajkot', state: 'Gujarat', lat: 22.3039, lng: 70.8022, region: 'West', avgJanTemp: 20, avgJulTemp: 29 },
   { name: 'Varanasi', state: 'Uttar Pradesh', lat: 25.3176, lng: 82.9739, region: 'North', avgJanTemp: 16, avgJulTemp: 29 },
   { name: 'Srinagar', state: 'Jammu & Kashmir', lat: 34.0837, lng: 74.7973, region: 'Himalayan', avgJanTemp: 2, avgJulTemp: 24 },
   { name: 'Aurangabad (Chhatrapati Sambhaji Nagar)', state: 'Maharashtra', lat: 19.8762, lng: 75.3433, region: 'West', avgJanTemp: 20, avgJulTemp: 26 },
@@ -70,5 +92,19 @@ export const INDIAN_CITIES: IndianCity[] = [
 
 export function findCityByName(query: string): IndianCity | undefined {
   const q = query.trim().toLowerCase();
-  return INDIAN_CITIES.find(c => c.name.toLowerCase() === q || c.name.toLowerCase().includes(q));
+  if (!q) return undefined;
+
+  // 1. Direct name match
+  const exactMatch = INDIAN_CITIES.find(c => c.name.toLowerCase() === q);
+  if (exactMatch) return exactMatch;
+
+  // 2. Partial name match
+  const nameContains = INDIAN_CITIES.find(c => c.name.toLowerCase().includes(q));
+  if (nameContains) return nameContains;
+
+  // 3. State match (e.g. searching 'Gujarat' -> returns Ahmedabad/Gujarat hub)
+  const stateMatch = INDIAN_CITIES.find(c => c.state.toLowerCase() === q || c.state.toLowerCase().includes(q));
+  if (stateMatch) return stateMatch;
+
+  return undefined;
 }
