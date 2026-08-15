@@ -1,4 +1,4 @@
-# Logs
+# Logs & Temp Debug Files
 logs
 *.log
 npm-debug.log*
@@ -7,19 +7,38 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Node Modules & Build Output
+node_modules/
+dist/
+dist-ssr/
+build/
+*.tsbuildinfo
 
-# Editor directories and files
+# Environment Variables & Secret Files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+
+# Deployment & Provider Artifacts
+.vercel
+.vercel/
+
+# Operating System & IDE Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-.vercel
