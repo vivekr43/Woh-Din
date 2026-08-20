@@ -25,6 +25,7 @@ import { ShinyText } from './reactbits/ShinyText';
 import { CountUp } from './reactbits/CountUp';
 import { MagneticButton } from './reactbits/MagneticButton';
 import { RadioWohDin } from './RadioWohDin';
+import { CitySnapshotGallery } from './CitySnapshotGallery';
 import { TimeCapsuleCalculator } from './TimeCapsuleCalculator';
 import { getArrivalDayHighlights } from '../utils/dayHighlights';
 import { LiveHeartbeatCounter } from './LiveHeartbeatCounter';
@@ -542,10 +543,11 @@ export const CertificateCard: React.FC<CertificateCardProps> = ({
             </div>
           )}
 
-          {/* SECTION 3: RADIO WOH DIN (BINACA GEETMALA & AAKASHVANI VINTAGE AUDIO DIAL) */}
+          {/* SECTION 3: RADIO WOH DIN & VINTAGE CITY SNAPSHOT */}
           {revealStep >= 3 && song && (
-            <div className="animate-fade-in-up">
+            <div className="animate-fade-in-up space-y-4">
               <RadioWohDin song={song.song} birthYear={birthYear} />
+              <CitySnapshotGallery key={`${city}-${birthYear}`} cityName={city} year={birthYear} />
             </div>
           )}
 
