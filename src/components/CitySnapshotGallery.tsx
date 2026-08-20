@@ -23,7 +23,7 @@ export const CitySnapshotGallery: React.FC<CitySnapshotGalleryProps> = ({
   const getEraFilter = (y: number) => {
     if (y < 1960) return 'grayscale(0.8) contrast(1.1) brightness(0.95)';
     if (y < 1980) return 'sepia(0.25) saturate(1.15) contrast(1.05)';
-    if (y < 2000) return 'saturate(1.1) contrast(1.05)';
+    if (y < 2000) return 'saturate(1.15) contrast(1.05)';
     return 'none';
   };
 
@@ -101,7 +101,7 @@ export const CitySnapshotGallery: React.FC<CitySnapshotGalleryProps> = ({
             </span>
           </div>
           <p className="text-xs text-[#A89B8C] mt-0.5">
-            Authentic, strictly verified landmark photography for {cityName} ({year})
+            Authentic landmark photography for {cityName} ({year})
           </p>
         </div>
 
@@ -135,7 +135,7 @@ export const CitySnapshotGallery: React.FC<CitySnapshotGalleryProps> = ({
           <div className="aspect-[16/9] w-full flex flex-col items-center justify-center bg-[#201A14] rounded-lg p-6 space-y-3">
             <div className="w-10 h-10 border-3 border-[#E8A33D] border-t-transparent rounded-full animate-spin" />
             <p className="text-xs font-mono text-[#E8A33D] animate-pulse">
-              Verifying authentic photography for {cityName} ({year})...
+              Loading photography for {cityName} ({year})...
             </p>
           </div>
         ) : currentPhoto && !failedUrls.has(currentPhoto.url) ? (
@@ -153,7 +153,7 @@ export const CitySnapshotGallery: React.FC<CitySnapshotGalleryProps> = ({
               <img
                 key={currentPhoto.url}
                 src={currentPhoto.url}
-                alt={currentPhoto.title}
+                alt={`${cityName} in ${year}`}
                 style={{ filter: getEraFilter(year) }}
                 onLoad={() => setImageLoaded(true)}
                 onError={() => {
@@ -169,7 +169,7 @@ export const CitySnapshotGallery: React.FC<CitySnapshotGalleryProps> = ({
               />
 
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
               {/* Source Badge */}
               <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-3 py-1 rounded-full border border-[#E8A33D]/30 text-xs font-medium text-[#F5EBE0] flex items-center gap-1.5 shadow-md">
@@ -206,18 +206,11 @@ export const CitySnapshotGallery: React.FC<CitySnapshotGalleryProps> = ({
                   </button>
                 </>
               )}
-
-              {/* Title overlay */}
-              <div className="absolute bottom-3 left-3 right-3 text-left">
-                <h4 className="font-fraunces text-base sm:text-lg font-bold text-[#F5EBE0] drop-shadow-md line-clamp-2">
-                  {currentPhoto.title}
-                </h4>
-              </div>
             </div>
 
             {/* Caption */}
-            <div className="p-3 text-left">
-              <p className="text-xs sm:text-sm text-[#F5EBE0]/90 leading-relaxed italic line-clamp-3">
+            <div className="p-3 text-left bg-[#1C1713] rounded-b-lg border-t border-[#E8A33D]/15">
+              <p className="text-xs sm:text-sm text-[#F5EBE0]/90 leading-relaxed italic">
                 "{currentPhoto.caption}"
               </p>
             </div>
@@ -279,7 +272,7 @@ export const CitySnapshotGallery: React.FC<CitySnapshotGalleryProps> = ({
 
             <img
               src={currentPhoto.url}
-              alt={currentPhoto.title}
+              alt={`${cityName} in ${year}`}
               style={{ filter: getEraFilter(year) }}
               className="w-full max-h-[75vh] object-contain rounded-xl"
               crossOrigin="anonymous"
@@ -287,8 +280,7 @@ export const CitySnapshotGallery: React.FC<CitySnapshotGalleryProps> = ({
             />
             <div className="mt-3 text-left flex items-center justify-between">
               <div>
-                <h4 className="font-fraunces text-lg text-[#E8A33D] font-bold">{currentPhoto.title}</h4>
-                <p className="text-sm text-[#F5EBE0] mt-1">{currentPhoto.caption}</p>
+                <p className="text-sm text-[#F5EBE0] italic">"{currentPhoto.caption}"</p>
               </div>
               {photos.length > 1 && (
                 <span className="text-xs font-mono text-[#A89B8C] ml-4 whitespace-nowrap">
